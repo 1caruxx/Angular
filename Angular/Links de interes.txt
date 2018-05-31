@@ -1,0 +1,3 @@
+https://angular.io/tutorial
+https://stackblitz.com/
+https://www.youtube.com/watch?v=OTDgu6qAhgo&index=6&list=PLBdkl5-ytBTxd-00futJ72_vvTESUry8M

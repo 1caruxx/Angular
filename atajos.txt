@@ -1,0 +1,31 @@
+﻿ALT + 60: <
+ALT + 62: >
+ALT + 92: \
+ALT + 91: [
+ALT + 93: ]
+ALT + 94: ^
+ALT + 124: |
+ALT + 123: {
+ALT + 125: }
+ALT + 126: ~
+
+CTRL + W:
+ALT + TAB:
+ALT + SHIFT + TAB:
+START + TAB:
+CTRL + TAB:
+START + espacio: Alterna entre el idioma del teclado
+
+Visual Studio Code
+
+! -> TAB: Imprime la estrucutra basica para un template HTML (valido exclusivamente para archivos con extension .html o .htm)
+CTRL + }: Documentar texto seleccionado, se ajusta automaticamente segun la extension del archivo.
+CTRL + ¡: Aplica una tabulacion al texto seleccionado.
+CTRL + ': Quita una tabulacion al texto seleccionado.
+CTRL + K -> F: Cierra el area de trabajo actual (el directorio del proyecto).
+CTRL + S: Guarda el archivo que se este editando actualmente.
+CTRL + K -> S: Guarda todos los archivos del area de trabajo.
+CTRL + J: Oculta o muestra la barra inferior (terminal, consola de depuracion, etc).
+CTRL + B: Oculta o muestra la barra lateral izquierda.
+CTRL + SHIFT + Ñ: Abre una nueva instancia del terminal integrado.
+ALT + SHIFT + CLICK: Permite seleccionar un campo y desplegrar varios cursores.
