@@ -364,8 +364,8 @@ Puede observarse una lista completa de los prefijos en el siguiente [enlace](htt
 
 ### Especificacion en CSS
 
-Los estilos en CSS asi como todos sus elementos (selectores, pseudo-clases, lo que sea) tienen una jerarquizacion que determinara que estilo final sera el que tendra el elemento y el orden que debe serguir el navegador para aplicar los estilos. Esta jerarquizacion estara determinada por la "distancia" que tenga el estilo respecto al elemento asi como su grado de especificacion. Si se setea dos veces la misma propiedad, la que este mas cerca del elemento sera la que finalmente sea aplicada (es decir, la que mas abajo este declarada en la hoja de estilo). Por el mismo factor, el orden en que se coloque la etiqueta `<style>` o se establezca una relacion con una hoja de estilos externa importa.<br/>
-A su vez, los elementos de una hoja de estilos, tiene un grado de especificacion. El grado de especificacion es un numero comprendido entre el 0 (inclusive) y el 1000 (inclusive). Por ejemplo, el selector universal (*) o el elemento "body" tienen un grado de especificacion igual a 0, el mas bajo. Lo que quiere decir que sus estilos pueden ser pisados por cualquier elemento. A su vez, los estilos que se declaren en la propiepa etiqueta HTML tendra un grado de especificacion igual a 1000. La siguiente lista determina el grado de especificacion de algunos elementos:
+Los estilos en CSS asi como todos sus elementos (selectores, pseudo-clases, lo que sea) tienen una jerarquizacion que determinara que estilo final sera el que tendra el elemento y el orden que debe serguir el navegador para aplicar los estilos. Esta jerarquizacion estara determinada por la "distancia" que tenga el estilo respecto al elemento asi como su grado de especificacion. Si se setea dos veces la misma propiedad, la que este mas cerca del elemento sera la que finalmente sea aplicada (es decir, la que mas abajo este declarada en la hoja de estilos). Por el mismo factor, el orden en que se coloque la etiqueta `<style>` o se establezca una relacion con una hoja de estilos externa importa.<br/>
+A su vez, los elementos de una hoja de estilos, tiene un grado de especificacion. El grado de especificacion es un numero comprendido entre el 0 (inclusive) y el 1000 (inclusive). Por ejemplo, el selector universal (*) o el elemento "body" tienen un grado de especificacion igual a 0, el mas bajo. Lo que quiere decir que sus estilos pueden ser pisados por cualquier elemento. A su vez, los estilos que se declaren en la propia etiqueta HTML tendran un grado de especificacion igual a 1000. La siguiente lista determina el grado de especificacion de algunos elementos:
 
 * *, body: 0
 * Elementos (h1, div, etc): 1
@@ -384,6 +384,27 @@ a:link { /* Especificacion: 10 + 1 = 11 */
     color: green;
 }
 ```
+
+Existe una palabra reservada que permite darle una mayor prioridad a la propiedad en la cual sea seteado. Se trata de "!important". Esta palabra reservada debe colocarse antes del punto y coma ";"
+
+```
+div {
+    border: solid green 2px !important;
+    border: solid red 2px;
+}
+```
+
+El resultado final del anterior ejemplo dado es que todos los elementos `<div>` tendran bordes de color verde. Si a las dos declaraciones se les añadese "!important", se mantendria el criterio convencional para seleccionar el estilo, pero solo entre estas dos.
+
+```
+div {
+    border: solid green 2px !important; /* A */
+    border: solid red 2px !important; /* B */
+    border: solid violet 2px; /* C */
+}
+```
+
+El resultado final sera que los elementos `<div>` tendran un borde de color rojo, por que la declaracion "B" fue la ultima enser escrita y que tenga la palabra "!important".
 
 ## Valores
 
@@ -652,16 +673,18 @@ Valores: left | right | both
 
 Esta propiedad permite agregar una o varias sombras a un elemento. Funciona de la misma forma que la propiedad "**text-shadow**". Recibira de dos a cuatro valores. Los dos primeros valores son obligatorios y marcan la posicion de la sombra, el primero representa la posicion horizontal respecto al elemento y otro representa la posicion vertical:
 
+```
 .sombra {
     box-shadow: 3px 3px;
 }
+```
 
 Los valores opcionales son, la difuminacion "blur" al cual se le debe asignar una unidad de medida y el color.
 
 
 ## Fuentes
 
-Una fuente de texto esta compuesta por varios archivos cuya extension puede variar segun el tipo de fuente que sea. Para ver los tipos de fuentes se puede visitar el siguiente [enlace](https://www.w3schools.com/css/css3_fonts.asp). Con CSS es posible importar las fuentes que el propio desarollador haya creado o tenga los archivos fisicos de las mismas. Ademas, usando este metodo, la fuente se descargara automaticamente en la computadora cliente, lo que quiere decir que no es necesario preoucuparse por setear fuentes de reemplazo.<br/>
+Una fuente de texto esta compuesta por varios archivos cuya extension puede variar segun el tipo de fuente que sea. Para ver los tipos de fuentes se puede visitar el siguiente [enlace](https://www.w3schools.com/css/css3_fonts.asp "W3 School: CSS3 Fonts"). Con CSS es posible importar las fuentes que el propio desarollador haya creado o tenga los archivos fisicos de las mismas. Ademas, usando este metodo, la fuente se descargara automaticamente en la computadora cliente, lo que quiere decir que no es necesario preoucuparse por setear fuentes de reemplazo.<br/>
 Para lograr esta tarea, sera necesario usar la regla "@font-face" que en cuya declaracion, habra dos propiedades que son obligatorias. Una de ellas sera <b>"font-family"</b>. En esta ocasion, se le debera asignar un nombre de fuente inventado, ya que se esta creando una propiea fuente en CSS. La otra propiedad sera <b>"src"</b>, a la cual se le asignara la ruta donde encuentre alojado el archivo de la fuente. Por ejemplo:
 
 ```
@@ -681,13 +704,16 @@ Tambien es posible asignar un archivo para un estilo especifico de la fuente:
 @font-face {
     font-family: mifuente;
     src: url('./fonts/Roboto-Bold.ttf');
-    font-weight: bold; /* Si es especifica un estilo, el navegador usara este archivo cuando se le pida que renderize la fuente con ese estilo, en este caso, negrilla, pero puede ser con cualquier otro*/
+    font-weight: bold; /* Si es especifica un estilo, el navegador usara este archivo cuando se le pida que renderize la fuente con ese estilo, en este caso, negrilla, pero puede ser con cualquier otro */
 }
 
 div {
-    font-family: mifuente; /* Aca se esta usando la fuente previamente creada en la regla @font-face */
+    font-family: mifuente;
     font-weight: bold;
 }
+```
+
+[Google Fonts](https://fonts.google.com/) tambien permite descargar los archivos de todas sus fuentes. Ademas proporciona estilos para cada una de ellas que pueden ser aplicados como clases. Para mas informacion, serguir este [enlace](https://developers.google.com/fonts/docs/getting_started)
 
 ## Funciones
 

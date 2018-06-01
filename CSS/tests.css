@@ -17,7 +17,9 @@
 
 div {
     font-family: Roboto;
-    border: solid red 2px;
+    border: solid red 2px !important;
+    border: solid green 2px !important;
+    border: solid violet 2px;
     font-weight: 200;
     font-size: 40px;
 }
