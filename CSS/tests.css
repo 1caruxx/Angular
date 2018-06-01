@@ -1,6 +1,23 @@
-body {
+/* @font-face {
+    font-family: roboto;
+    src: url('./src/font/Roboto-Thin.ttf');
+}
 
-    background: radial-gradient(circle, rgb(255, 255, 255, 0) , black);
-    height: 100%;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+@font-face {
+    font-family: roboto;
+    src: url('./src/font/Roboto-Bold.ttf');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: roboto;
+    src: url('./src/font/Roboto-Italic.ttf');
+    font-style: italic
+} */
+
+div {
+    font-family: Roboto;
+    border: solid red 2px;
+    font-weight: 200;
+    font-size: 40px;
 }

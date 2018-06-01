@@ -1,6 +1,6 @@
 # ![Logo](./icon.png) Introduccion a CSS
 
-CSS (Cascading Style Sheets, por su traduccion al español, hojas de estilo en cascada) es un lenguaje de estilos que permite personalizar y mejorar visualmente paginas. Puede ser escrito dentro del mismo template HTML o en un archivo exterior el cual debe tener una extesion .css.
+CSS (Cascading Style Sheets, por su traduccion al español, hojas de estilo en cascada) es un lenguaje de estilos que permite personalizar y mejorar visualmente paginas. Puede ser escrito dentro del mismo template HTML o en un archivo externo el cual debe tener una extesion .css.
 
 ## Tabla de contenidos
 
@@ -24,6 +24,8 @@ CSS (Cascading Style Sheets, por su traduccion al español, hojas de estilo en c
 &nbsp;&nbsp;&nbsp;[Display](#display)<br/>
 &nbsp;&nbsp;&nbsp;[Position y z-index](#position)<br/>
 &nbsp;&nbsp;&nbsp;[Float y Clear](#float-y-clear)<br/>
+&nbsp;&nbsp;&nbsp;[Box-shadow](#box-shadow)<br/>
+* [Funciones](#funciones)
 
 ## Forma de uso
 
@@ -541,7 +543,7 @@ Esta propiedad hace referencia al espacio que hay entre el borde de un elemento 
 * margin-left
 
 La propiedad "margin" engloba a estas cuatro anteriores y al igual que muchas propiedades derivadas de border, pueden asignarsele de uno a cuatro valores que seguiran el mismo orden en sentido de las agujas del reloj.<br/>
-Si dos elementos adyacentes tienen un margen de 25px cada uno, el espacio que habra entre los dos no sera de 50px (25px + 25px) sino de 25px. Esto se debe al "margin collapse" (o colapso de imagenes), que establecera que el espacio entre dos elementos con un margen seteado sera equivalente al tamaño del margen mas grande que tenga alguno de los dos elementos.
+Si dos elementos adyacentes tienen un margen de 25px cada uno, el espacio que habra entre los dos no sera de 50px (25px + 25px) sino de 25px. Esto se debe al "margin collapse" (o colapso de margenes), que establecera que el espacio entre dos elementos con un margen seteado sera equivalente al tamaño del margen mas grande que tenga alguno de los dos elementos.
 
 ### padding
 
@@ -562,7 +564,14 @@ Valores: uppercase | lowercase | capitalize
 6) **letter-spacing:** Hace referencia al espaciado que debe haber entre los caracteres. Es posible asignarle un valor negativo para que los caracteres esten mas juntos entre si.
 7) **word-spacing:** Hace referencia al espaciado que debe haber entre palabra y palabra. Es posible asignarle un valor negativo para que las palabras esten mas juntas entre si.
 8) **line-height:** Hace referencia al espaciado que debe haber entre linea y linea.
-9) **text-shadow:** Añade una sombra al texto. Puede recibir de dos a cuatro valores. Dos valores son requeridos y representaran la posicion de la sombra respecto al texto. El primero sera la posicion horizontal y el segundo la vertical. Los otros dos valores opcionales seran el color y la difuminacion.<br/>
+9) **text-shadow:** Añade una sombra al texto. Puede recibir de dos a cuatro valores. Dos valores son requeridos y representaran la posicion de la sombra respecto al texto. El primero sera la posicion horizontal y el segundo la vertical. Se le deberan pasar unidades de medida que pueden ser positivas asi como tambien negativas. En el caso de la posicion horizontal, si se le asigna un valor negativo, la sombra se posicionara al izquierda del elemento y respecto a la posicion vertical, por encima. Los otros dos valores opcionales seran el color y la difuminacion. Tambien es posible asignar varias sombras si se las separa con comas.
+
+```
+.sombreado {
+    text-shadow: 2px 2px 5px violet, -2px -2px 5px orange;
+}
+```
+
 Valores: posicion-x (una unidad de medida) | posicion-y (una unidad de medida) [ | color | difuminacion (una unidad de medida)]
 10) **user-select:** Hace referencia a como sera seleccionado el texto cuando el usuario clickee.<br/>
 Valores: none (el usuario no podra seleccionar el texto) | text (el texto si podra ser seleccionado) | all (se seleccionara todo el texti automaticamente tras que el usuario haga solo un click)
@@ -638,6 +647,47 @@ Valores: none (por defecto) | left | right
 
 La propiedad <b>"clear"</b> hace que un elemento, no respete la propiedad "float" de otro elemento. Se puede especificar el lado que no se quiere respetar.<br/>
 Valores: left | right | both
+
+### box-shadow
+
+Esta propiedad permite agregar una o varias sombras a un elemento. Funciona de la misma forma que la propiedad "**text-shadow**". Recibira de dos a cuatro valores. Los dos primeros valores son obligatorios y marcan la posicion de la sombra, el primero representa la posicion horizontal respecto al elemento y otro representa la posicion vertical:
+
+.sombra {
+    box-shadow: 3px 3px;
+}
+
+Los valores opcionales son, la difuminacion "blur" al cual se le debe asignar una unidad de medida y el color.
+
+
+## Fuentes
+
+Una fuente de texto esta compuesta por varios archivos cuya extension puede variar segun el tipo de fuente que sea. Para ver los tipos de fuentes se puede visitar el siguiente [enlace](https://www.w3schools.com/css/css3_fonts.asp). Con CSS es posible importar las fuentes que el propio desarollador haya creado o tenga los archivos fisicos de las mismas. Ademas, usando este metodo, la fuente se descargara automaticamente en la computadora cliente, lo que quiere decir que no es necesario preoucuparse por setear fuentes de reemplazo.<br/>
+Para lograr esta tarea, sera necesario usar la regla "@font-face" que en cuya declaracion, habra dos propiedades que son obligatorias. Una de ellas sera <b>"font-family"</b>. En esta ocasion, se le debera asignar un nombre de fuente inventado, ya que se esta creando una propiea fuente en CSS. La otra propiedad sera <b>"src"</b>, a la cual se le asignara la ruta donde encuentre alojado el archivo de la fuente. Por ejemplo:
+
+```
+@font-face {
+    font-family: mifuente; /* Es aconsejable usar solamente minusculas porque internet explorer puede presentar problemas */
+    src: url('./fonts/Roboto-Regular.ttf');
+}
+
+div {
+    font-family: mifuente; /* Aca se esta usando la fuente previamente creada en la regla @font-face */
+}
+```
+
+Tambien es posible asignar un archivo para un estilo especifico de la fuente:
+
+```
+@font-face {
+    font-family: mifuente;
+    src: url('./fonts/Roboto-Bold.ttf');
+    font-weight: bold; /* Si es especifica un estilo, el navegador usara este archivo cuando se le pida que renderize la fuente con ese estilo, en este caso, negrilla, pero puede ser con cualquier otro*/
+}
+
+div {
+    font-family: mifuente; /* Aca se esta usando la fuente previamente creada en la regla @font-face */
+    font-weight: bold;
+}
 
 ## Funciones
 
