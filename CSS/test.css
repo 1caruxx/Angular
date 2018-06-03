@@ -1,0 +1,42 @@
+body, html {
+    height: 100%;
+}
+
+
+/* img {
+    -webkit-filter: drop-shadow(1px 1px 0 black)
+drop-shadow(-1px -1px 0 black);
+filter: drop-shadow(3px 3px 0 red) 
+drop-shadow(-3px -3px 0 red);
+width:20%;
+margin: auto;
+} */
+
+/* img {
+    background-color: orange;
+    border: solid red 2px;
+    width: 50px;
+    height: 50px;
+    margin: auto;
+    display: block;
+} */
+
+div {
+    background-color: orange;
+    border: solid red 2px;
+    width: 50px;
+    height: 50px;
+    transition: 0.8s;
+    display: inline-block;
+}
+
+div:hover {/* matrix(scaleX(),skewY(),skewX(),scaleY(),translateX(),translateY())*/
+    /* transform: skewY(-20deg);
+    transform: skewX(-20deg); */
+
+    transform: scaleX(2);
+    
+    /* transform: skew(70deg, 120deg); */
+/* 
+    transform: matrix(0, 0, 0, 0,); */
+}

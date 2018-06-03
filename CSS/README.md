@@ -1,6 +1,6 @@
 # ![Logo](./icon.png) Introduccion a CSS
 
-CSS (Cascading Style Sheets, por su traduccion al español, hojas de estilo en cascada) es un lenguaje de estilos que permite personalizar y mejorar visualmente paginas. Puede ser escrito dentro del mismo template HTML o en un archivo externo el cual debe tener una extesion .css.
+CSS (Cascading Style Sheets, por su traduccion al español, hojas de estilo en cascada) es un lenguaje de estilos que permite personalizar y mejorar visualmente paginas. Puede ser escrito dentro del mismo template HTML o en un archivo externo el cual debe tener una extesion `.css`.
 
 ## Tabla de contenidos
 
@@ -25,6 +25,7 @@ CSS (Cascading Style Sheets, por su traduccion al español, hojas de estilo en c
 &nbsp;&nbsp;&nbsp;[Position y z-index](#position)<br/>
 &nbsp;&nbsp;&nbsp;[Float y Clear](#float-y-clear)<br/>
 &nbsp;&nbsp;&nbsp;[Box-shadow](#box-shadow)<br/>
+&nbsp;&nbsp;&nbsp;[Fuentes](#fuentes)<br/>
 * [Funciones](#funciones)
 
 ## Forma de uso
@@ -38,24 +39,26 @@ Para añadir CSS a un  template, existen tres posibles formas.<br/>
 
 El atributo "src" puede contener la direccion de un archivo fisico almacenado en la maquina host, o bien se puede incluir mediante un vinculo de internet. Ejemplo: 
 
-```
+```html
 <link rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/4/w3.css">
 ```
 
 2) Declarar explicitamente los estilos en el propio template, para ello, se declararan los estilos dentro de los tags "style" en el encabezado del template:
 
-```
+```html
 <head>
     <style>
-        .
-        .
-        .
+        h1 {
+            .
+            .
+            .
+        }
     </style>
 </head>
 ```
 3) Declarar los estilos en la propia etiqueta HTML:
 
-```
+```html
 <p style="color:red;">...</p>
 ```
 
@@ -63,7 +66,7 @@ Si una etiqueta, tiene declarados varios estilos en distintas partes, el orden d
 1) Estilos propios de las etiquetas.
 2) Estilos incluidos en el encabezado del template (en este caso, tendra prioridad el ultimo en ser invocado):
 
-```
+```html
 <head>
     <link rel="stylesheet" type="text/css" href="estilo.css">
     <style>
@@ -83,7 +86,7 @@ Esto se debe a la especificidad en CSS.
 
 La sintaxis de un estilo escrito en CSS3 es la siguiente:
 
-```
+```css
         2
    -----------
 p { color: red; background-color: black; }
@@ -92,24 +95,24 @@ p { color: red; background-color: black; }
 ```
 1) El selector, es decir, la etiqueta HTML que sera afectada por las declaraciones contenidas por las llaves.
 2) Declaracion, son separadas por puntos y comas.
-3) La propiedad, es decir, el aspecto que se desea modificar de la etiqueta. <span style="color:red;">La asignacion valores a las propiedades es secuencial.</span>
+3) La propiedad, es decir, el aspecto que se desea modificar de la etiqueta. La asignacion de valores a las propiedades es secuencial.
 
-```
+```css
 div {
-    background-color: red; <---- Primero se setea el fondo de color rojo
-    background-color: green; <---- La declaracion anterior sera pisada por esta reasignando un valor a la misma propiedad, lo que quiere decir que el fondo del elemento sera verde.
+    background-color: red; /* Primero se setea el fondo de color rojo */
+    background-color: green; /* La declaracion anterior sera pisada por esta reasignando un valor a la misma propiedad, lo que quiere decir que el fondo del elemento sera verde. */
 }
 ```
 4) El valor, osea, como se desea que el aspecto sea modificado.
 
 En este caso, las declaraciones afectaran a todas las etiquetas `<p>` del template que utilize esta hoja de estilos. Si se desea elegir individualmente la etiqueta a la cual afectara un estilo, se puede usar el selector de clase usando el carater punto ".".
 
-```
+```css
 .clase { color: red; background-color: black; }
 ```
 Para usar esta clase, se debe asignar su nombre a el atributo "class" del elemento al cual se le quiere dar el estilo:
 
-```
+```html
 <div class="clase">Hola mundo!</div>
 <p class="clase">Hola mundo!</p>
 ```
@@ -118,26 +121,26 @@ El estilo se vera reflejado en todas las etiquetas que lo implementen.<br/>
 
 Tambien es posible asignar varias clases de esta forma:
 
-```
+```html
 <div class="fondoRojo letrasGrandes">Hola mundo!</div>
 ```
 
 Tambien se puede especificar a que tipo de etiqueta quiere que se afecte esta clase:
 
-```
+```css
 div.clase { color: red; background-color: black; }
 ```
 
 De esta manera, la clase solo afectara a las etiquetas `<div>` que la implementen:
 
-```
+```html
 <div class="clase">Hola mundo!</div> <---- Funciona
 <p class="clase">Hola mundo!</p> <-------- No funciona
 ```
 
 Si a un elemento se le añade un estilo y ademas se crea una clase y la implementa, heredara todas las propiedades. De ahi el nombre de "hoja de estilos en cascada". Por ejemplo:
 
-```
+```html
 <head>
     <style>
         div {
@@ -156,13 +159,13 @@ Si a un elemento se le añade un estilo y ademas se crea una clase y la implemen
 
 Es posible tambien añadir un estilo a varias etiquetas a la vez, separando los selectores con comas ",".
 
-```
+```css
 p, div, h1 {color: red; background-color: black;}
 ```
 
 El asterisco "*" puede utilizarse para seleccionar todos los elementos del DOM y asignarles un estilo en comun. Por otro lado, el numeral "#" permite seleccionar un elemento segun su atributo id.
 
-```
+```html
 <head>
     <style>
         * { font-family: Verdana; }
@@ -184,7 +187,7 @@ Los combinadores son selectores compuestos que permiten describir una relacion e
 
 Si se escribe un selector seguido de otro sin separlo por comas, estare definiendo un estilo unico que afectara a la etiqueta contenida por otra etiqueta. Por ejemplo:
 
-```
+```html
 <head>
     <style>
         div p { /* El div sera la etiqueta contenedora al ser escrita primero y p la etiqueta que sera contenida */
@@ -211,7 +214,7 @@ Si se escribe un selector seguido de otro sin separlo por comas, estare definien
 
 Un comportamiento similar podria verse usando el selector ">". La diferencia es que se vera afectada la etiqueta hija si y solamente si la etiqueta que esta a la izquierda del operador ">" es su etiqueta padre directa. Por ejemplo:
 
-```
+```html
 <head>
     <style>
         div > p { /* El div debe ser la etiqueta padre directa de la etiqueta p */
@@ -239,7 +242,7 @@ Un comportamiento similar podria verse usando el selector ">". La diferencia es 
 
 El selector "+" se usa para seleccionar aquella etiqueta que este junta a otra (sean adyacentes) y ademas tengan la misma etiqueta padre en comun. A estas etiquetas se las denomina <b>"etiquetas hermanas"</b> o <b>"sibling tags"</b>. Por ejemplo:
 
-```
+```html
 <head>
     <style>
         div + div { /* La etiqueta afectada sera la que este a la derecha del operador y debe estar junto a una etiqueta especificada a la izquierda del operador */
@@ -261,13 +264,13 @@ Puede verse una lista completa de los selectores que CSS3 brinda a traves del si
 
 Las pseudo-clases, que forman parte de la familia de los selectores, son palabras reservadas que se usan para especificar un estado especial de un elemento. Siempre son precedidas por el caracter doble punto ":". Su sintaxis es la siguiente:
 
-```
+```css
 Selector:pseudo-clase {declaraciones}
 ```
 
 Un ejemplo podria ser la pseudo-clase ":hover".
 
-```
+```css
 div:hover {
     background-color: green;
 }
@@ -276,7 +279,7 @@ En este ejemplo, se seteara el color de fondo a verde de todos los elementos div
 
 Otra pseudo-clase es ":not()" que permite establecer excepciones a las etiqueas que seran afectadas por el estilo. Como parametro recibira un selector u otra pseudo-clase. Por ejemplo:
 
-```
+```css
 div i:not(.negrilla) {
     color: red;
 }
@@ -291,7 +294,7 @@ Pueve verse una lista completa de todas las pseudo-clases que CSS3 brinda a trav
 
 "Child" (que significa niño por su traduccion del ingles) es un abanico de pseudo-clases que permiten seleccionar un elemento segun su posicion respecto a su elemento padre. Por ejemplo, la pseudo-clase ":first-child", seleccionara el primer elemento dentro de su etiqueta padre.
 
-```
+```html
 <head>
     <style>
         p:first-child { color: red; }
@@ -315,21 +318,23 @@ Pueve verse una lista completa de todas las pseudo-clases que CSS3 brinda a trav
 La pseudo-clase ":last-of-type" hace algo similar, pero selecciona el ultimo elemento de una etiqueta padre.<br/>
 A su vez, ":nth-child(n)" permite seleccionar el elemento numero n (donde n es el numero que se le pasa como parametro a esta pseudo-clase) de cada etiqueta padre. Tambien es posible pasarle como parametro las palabras reservadas "odd", para seleccionar los elementos impares y "even" para los pares. Si se desea un comportamiento mas especifico, puede asignarse como parametro una formula del siguiente estilo:
 
-```
+```css
 td:nth-child(an + b) {
     background-color: grey;
 }
 
+/*
 - La letra a representa un numero que se debe colocar para determinar el intervalo de elementos con el que se quiere que se seleccionen.
 - La letra n sera un ciclo automatico que se ira remplazando de forma constante por un numero real.
 - La letra b es el numero del primer elemento que se desea seleccionar.
+*/
 ```
 
 ### Pseudo-elementos
 
 Los pseudo-elementos permiten seleccionar un trozo de un elemento, la primer letra, primera linea, contenido que se desea colocar antes y/o despues del elemento, que aspecto quiere se tenga un elemento cuando esta seleccionado. Siempre son antecedidos por el caracter compuesto, doble doble punto "::" para ser diferenciados de las pseudo-clases. Su sintaxis es la siguiente:
 
-```
+```css
 selector::pseudo-elemento {
     declaraciones
 }
@@ -360,6 +365,8 @@ div{
 }
 ```
 
+Siempre es conveniente escribir la propiedad estandar (es decir, sin prefijo) en ultimo lugar como se muestra en el ejemplo anterior. Esto se debe a que siempre se busca que el navegador use la propiedad estandar en lugar de una especifica. Si se colocase la propiedad estandar antes que las propiedades prefijadas, el navegador la implementaria (en el caso de que pudiese) y por encima de ella (la pisa), implementaria la propiedad prefijada. Esto se debe a que una propiedad standar asi como prefijada es considerada la misma propiedad, lo que quiere decir que ante una igualdad de propiedades, el navegador determina cual aplicar segun el orden en el que fueron asignadas (en el siguente apartado se detalla este comportamiento).
+
 Puede observarse una lista completa de los prefijos en el siguiente [enlace](https://en.wikipedia.org/wiki/CSS_hack#Browser_prefixes "Lista de prefijos de proveedores").
 
 ### Especificacion en CSS
@@ -375,7 +382,7 @@ A su vez, los elementos de una hoja de estilos, tiene un grado de especificacion
 
 Si en un mismo selector, se declara un un elemento y una pseudo-clase por ejemplo, se deben sumar su grados de especificacion para determinar el grado de especificacion total del estilo. Por ejemplo:
 
-```
+```css
 a { /* Especificacion: 1 */
     color: red;
 }
@@ -387,7 +394,7 @@ a:link { /* Especificacion: 10 + 1 = 11 */
 
 Existe una palabra reservada que permite darle una mayor prioridad a la propiedad en la cual sea seteado. Se trata de "!important". Esta palabra reservada debe colocarse antes del punto y coma ";"
 
-```
+```css
 div {
     border: solid green 2px !important;
     border: solid red 2px;
@@ -396,7 +403,7 @@ div {
 
 El resultado final del anterior ejemplo dado es que todos los elementos `<div>` tendran bordes de color verde. Si a las dos declaraciones se les añadese "!important", se mantendria el criterio convencional para seleccionar el estilo, pero solo entre estas dos.
 
-```
+```css
 div {
     border: solid green 2px !important; /* A */
     border: solid red 2px !important; /* B */
@@ -410,7 +417,7 @@ El resultado final sera que los elementos `<div>` tendran un borde de color rojo
 
 ## Propiedades
 
-Anotacion: Muchos elementos HTML ya tienen estilos predefinidos. Por ejemplo, la etiqueta `<a>` tiene la propiedad "text-decoration-line" seteada con el valor "underline" asi como un color. La etiqueta `<body>` tiene un pequeño margen ya establecido, lo que quiere decir que para quitarlas o modificarlas, habra que sobreescribirlas.
+Anotacion: Muchos elementos HTML ya tienen estilos predefinidos. Por ejemplo, la etiqueta `<a>` tiene la propiedad "text-decoration-line" seteada con el valor "underline" asi como un color. La etiqueta `<body>` tiene un pequeño margen ya establecido, lo que quiere decir que para quitarlas o modificarlas, habra que sobreescribirlas. El el siguente [enlace](https://www.w3schools.com/tags/default.asp "W# School: Tag list") se puede observar una lista completa de las etiquetas HTML en las cuales se especifican los estilos seteados por defecto por la mayoria de navegadores.
 
 ### background
 
@@ -420,7 +427,7 @@ Es una propiedad que hace referencia al fondo de un elemento y sus variaciones s
    Valores: nombre valido de color: (red, green, tomato) | codigo rgb (red green blue): rgb(255, 100, 9[, 0.8 (opacidad)]) | codigo exadecimal: #ffffff
 2) **background-image:** Hace referencia a la imagen que tendra el fondo. Es posible añadir tambien varias imagenes separadas por comas. Por ejemplo:
 
-```
+```css
 body {
     background-image: url('./src/imagen.jpg'), url('./src/otraImagen.jpg');
 }
@@ -429,10 +436,10 @@ La primer imagen asignada estara por encima de todas las demas, la segunda estar
 Valor: url('La ruta de la imagen, sea el archivo fisico o un vinculo de internet').
 3) **background-position:** La posicion del fondo que tendra en la pagina. Si se coloca un valor, lo aplicara tanto vertical como horizontalmente. Si se le asignan dos valores, el primero sera la posicion horizontal (eje x) y el segundo sera la posicion vertical (eje y). Esto tambien se puede especificar usando las propiedades <b>"background-position-x"</b> y <b>"background-position-y"</b>. Si se seteo mas de una imagen como fondo, se podra modificar cualquier propiedad de las mismas seprandolas con comas. Por ejemplo:
 
-```
+```css
 body {
     background-image: url('./src/imagen.jpg'), url('./src/otraImagen.jpg');
-    background-postion: top left, bottom right /* Los primeros dos valores hacen referencia a la posicion de la primer imagen asignada, los siguientes dos a la segunda. */
+    background-postion: top left, bottom right; /* Los primeros dos valores hacen referencia a la posicion de la primer imagen asignada, los siguientes dos a la segunda. */
 }
 ```
 
@@ -467,7 +474,7 @@ Valores:
 * background-position<br/>
 Se debe respetar el orden de las propiedades segun como se escribio anteriormente, aunque no importa si alguna propiedad se omite, por ejemplo:
 
-```
+```css
 div {
     background: red url('./ruta/imagen.jpg') no repeat center; /* La propiedad background-attachment se omitio, pero de otra forma se deberia haber asignado entre la propiedad background-repeat y background-position */
 
@@ -481,7 +488,7 @@ div {
 
 Permiten especificar la altura o anchura de un elemento. width para la anchura y height para la altura. La anchura y altura de un elemento solo incluye el contenido en si y no los bordes (propiedad border), margins (propiedad margin) y padding (espacio entre los bordes y el contenido), Esto quiere decir que la altura y anchura final del elemento, la que se puede observar una vez impreso en el template HTML, sera la suma de los valores que se le asignaron a las propiedades "margin", "padding" y finalmente las del contenido establecidas por la propiedad "width" y "heigth". Esto puede ser modficado con la siguiente declaracion:
 
-```
+```css
 div {
     box-sizing: border-box;
 }
@@ -489,7 +496,7 @@ div {
 Esta propiedad se encarga de que las propiedades "margin", "padding" y "border" pasen a formar parte de la anchura y del alto del elemento.<br/>
 Si se le asigna un porcentaje a estas propiedades, ese porcentaje sera calculado en base a la medida del elemento contenedor. Por defecto, a estas propiedades les son asignadas el valor "auto", lo que quiere decir que sera el navegador quien determine la anchura y la altura del elemento. Por ejemplo:
 
-```
+```html
 <body>
     <div></div>
 </body>
@@ -507,7 +514,7 @@ Valor: Una unidad de medida
 3) **border-color:** Hace referencia al color del borde.
 4) **border-radius:** Hace referencia al grado de curva de las puntas de un elemento. Si se le asigna un valor, afectara a todas las esquinas del elemento. Si se le asignan cuatro valores, afectara a cada esquina individualmente segun el orden (sentido de las agujas del reloj). Tambien es posible afectar a cada esquina individualmente mediante las siguientes propiedades:
 
-```
+```css
 div {
     border-top-left-radius: 0px; /* Esquina superior izquierda. */
     border-top-right-radius: 5px; /* Esquina superior derecha. */
@@ -518,21 +525,22 @@ div {
 
 5) **border-image:** Permite asignar una imagen como borde de un elemento.
 
-<span style="color:red;">Las propiedades que hacen referencia a los bordes, pueden recibir de un solo valor hasta cuatro. Si reciben un solo valor, afectaran a los cuatro bordes de un elemento.<br/>
+Las propiedades que hacen referencia a los bordes, pueden recibir de un solo valor hasta cuatro. Si reciben un solo valor, afectaran a los cuatro bordes de un elemento.<br/>
 Si reciben dos valores, el primer valor afectara al borde de arriba y al de abajo y el segundo al de la izquierda y al de la derecha.<br/>
 Si reciben tres valores, el primero afectara al borde de arriba, el segundo a los laterales y el tecero al borde de abajo.
-Si reciben cuatro valores, segundo el orden en que sean asignados, afectaran a los bordes en el sentido de las agujas del reloj. Por ejemplo:</span>
+Si reciben cuatro valores, segundo el orden en que sean asignados, afectaran a los bordes en el sentido de las agujas del reloj. Por ejemplo:
 
-```
+```css
 div {
     border-style: solid; /* Todos los bordes seran solidos. */
     border-color: green black; /* Los bordes de arriba y abajo seran verdes y los laterales negros. */
     border-width: 0px 5px 10px 15px; /* El borde de arriba tendra 0px, el de la derecha 5px, fondo 10px e izquierda 15px. */
 }
 ```
-<span>Tambien es posible especificar el borde en la misma propiedad. Por ejemplo:</span>
 
-```
+Tambien es posible especificar el borde en la misma propiedad. Por ejemplo:
+
+```css
 div {
     border-style: solid;
     border-top-color: red; /* El borde de arriba sera rojo. */
@@ -564,7 +572,8 @@ Esta propiedad hace referencia al espacio que hay entre el borde de un elemento 
 * margin-left
 
 La propiedad "margin" engloba a estas cuatro anteriores y al igual que muchas propiedades derivadas de border, pueden asignarsele de uno a cuatro valores que seguiran el mismo orden en sentido de las agujas del reloj.<br/>
-Si dos elementos adyacentes tienen un margen de 25px cada uno, el espacio que habra entre los dos no sera de 50px (25px + 25px) sino de 25px. Esto se debe al "margin collapse" (o colapso de margenes), que establecera que el espacio entre dos elementos con un margen seteado sera equivalente al tamaño del margen mas grande que tenga alguno de los dos elementos.
+Si dos elementos adyacentes tienen un margen de 25px cada uno, el espacio que habra entre los dos no sera de 50px (25px + 25px) sino de 25px. Esto se debe al "margin collapse" (o colapso de margenes), que establecera que el espacio entre dos elementos con un margen seteado sera equivalente al tamaño del margen mas grande que tenga alguno de los dos elementos.<br/>
+Esta propiedad es una buena forma de centrar (horizontalmente) un elemento siempre y cuando su propiedad "display" este seteada con el valor "block". Para conseguirlo se le debe asignar el valor "auto" a "margin".
 
 ### padding
 
@@ -587,7 +596,7 @@ Valores: uppercase | lowercase | capitalize
 8) **line-height:** Hace referencia al espaciado que debe haber entre linea y linea.
 9) **text-shadow:** Añade una sombra al texto. Puede recibir de dos a cuatro valores. Dos valores son requeridos y representaran la posicion de la sombra respecto al texto. El primero sera la posicion horizontal y el segundo la vertical. Se le deberan pasar unidades de medida que pueden ser positivas asi como tambien negativas. En el caso de la posicion horizontal, si se le asigna un valor negativo, la sombra se posicionara al izquierda del elemento y respecto a la posicion vertical, por encima. Los otros dos valores opcionales seran el color y la difuminacion. Tambien es posible asignar varias sombras si se las separa con comas.
 
-```
+```css
 .sombreado {
     text-shadow: 2px 2px 5px violet, -2px -2px 5px orange;
 }
@@ -600,7 +609,7 @@ Valores: none (el usuario no podra seleccionar el texto) | text (el texto si pod
 La primera fuente del font-stack es la que el diseñador desea que se cargue por defecto, las siguientes seran los reemplazos y el ultimo valor sera una "generic-family". generic-family es un termino que alude a un cunjunto de fuentes que tienen un aspecto similar. El explorador buscara entre ese conjunto de fuentes hasta encontrar una que pueda visualizar.<br/>
 Si el nombre de una fuente, esta compuesto por varias palabras, este tiene que estar entre comillas dosbles para que el explorador pueda reconocer que se trata de un unico nombre. Los nombres deben ser separados por comas. Ejemplo:
 
-```
+```css
 div {
                                 4
                  -------------------------------
@@ -609,10 +618,12 @@ div {
                    1            2            3
 }
 
+/*
 1) Fuente especifica que el diseñador quiere que se vizualice por defecto.
 2) Fuente un poco mas generica que sirve como reemplazo en el caso de que no este disponible la primera. Al esta el nombre compuesto por varias palabras, se coloca entre comillas dobles.
 3) generic-family.
 4) Font-Stack, el orden de asignacion de las fuentes sera desde la mas especifica a la mas generica.
+*/
 ```
 Se puede observar un listado bastante completo de fuentes para usar en los templates HTML en el siguiente [enlace](https://fonts.google.com/ "Google Fonts").
 
@@ -673,7 +684,7 @@ Valores: left | right | both
 
 Esta propiedad permite agregar una o varias sombras a un elemento. Funciona de la misma forma que la propiedad "**text-shadow**". Recibira de dos a cuatro valores. Los dos primeros valores son obligatorios y marcan la posicion de la sombra, el primero representa la posicion horizontal respecto al elemento y otro representa la posicion vertical:
 
-```
+```css
 .sombra {
     box-shadow: 3px 3px;
 }
@@ -681,13 +692,72 @@ Esta propiedad permite agregar una o varias sombras a un elemento. Funciona de l
 
 Los valores opcionales son, la difuminacion "blur" al cual se le debe asignar una unidad de medida y el color.
 
+### transform
+
+Esta propiedad permite alterar el estado de un elemento. Como valor, solo puede recibir funciones y dependiendo de que funcion reciba, esta determinara el tipo de transformacion. Estas pueden ser bidimensionales o tridimensionales:
+
+#### Transformaciones bidimensionales
+
+Las funciones bidimensionales son:<br/>
+
+* **translate():** Esta funcion se encarga de desplazar un objeto de su posicion original (no importa si la propiedad "display" esta seteada como "static"). Recibe dos parametros, el primero sera una unidad de medida que determinara cuanto se tiene que desplazar el objeto horizontalmente. El segundo sera lo mismo pero verticalmente, por ejemplo:
+
+```css
+div {
+    transform: translate(25px, 10px); /* Todos los elementos de tipo <div> seran desplazados 25px hacia la derecha y 10px hacia abajo */
+}
+```
+
+Tambien es posible pasarle como parametros a la funcion, valores negativos para que el elemento se desplaze hacia la izquierda o hacia arriba. Las funciones "translateX()" y "translateY()" cumplen una tarea similiar pero para un solo eje. Cabe resaltar, que la transformacion de un elemento, no afectara a la posicion de los otros. Por ejemplo, si un elemento se desplaza a la derecha y hay un elemento adyacente a él, este ultimo no se vera afectado. Podria decirse que mientras se ejecuta la animacion, el elemento esta en un plano distinto.<br/>
+* **rotate():** Esta funcion se encarga de rotar la cantidad de grados que se le pasen como parametro al elemento:
+
+```css
+div {
+    transform: rotate(90deg);
+}
+```
+
+Si se le pasa un valor positivo, el elemento rotara en el sentido de las agujas del reloj, caso contrario si el valor es negativo.<br/>
+* **scale():** Esta funcion permite alterar el tamaño original de un elemento. Recibira dos valores que pueden ser un numero entero o flotante que multiplicara la anchura (primer valor) o la altura (segundo valor). Si se le pasa un numero mayor que 0 y menor que uno, disminuira el tamaño del elemento y si se le pasa un numero menor que cero, lo invertira. Las funciones "scaleX()" y "scaleY()" permiten alterar ambos ejes de forma individual.<br/>
+* **skew():**<br/>
+* **matrix():** Permite agrupar todas las funciones anteriormente nombradas en una misma (exceptuando la funcion rotate()). Su sintaxis sera la siguiente:
+
+```css
+div {
+    transform: matrix(scaleX(),skewY(),skewX(),scaleY(),translateX(),translateY());
+}
+```
+
+Para asignar mas de una funcion a la propiedad transform, tendra que ser en la misma linea y sin separarlas por comas. De otra forma, los valores serian pisados:
+
+```css
+div {
+    transform: translateX() translateY();
+}
+```
+
+A su vez, tambien se puede pasarle varias funciones distintas a esta propiedad para generar un efecto unico. El orden en que se llamen a estas funciones influye en la animacion final.
+
+#### Transformaciones tridimensionales
+
+Las funciones tridimensionales son:<br/>
+
+* **rotateX():** Gira el elemento de forma horizontal sobre su propio eje segun la cantidad de grados que se le pasen como parametro. El efecto sera el mismo si el valor que se le pasa es negativo o positivo.
+* **rotateY():** Gira el elemento de forma vertical sobre su propio eje segun la cantidad de grados que se le pasen como parametro. El efecto sera el mismo si el valor que se le pasa es negativo o positivo.
+* **rotateZ():**
+* **rotate3d():**
+
+### transition
+
+Esta propiedad especifica el lapso de tiempo que tardara un elemento en pasar de un estado, a otro. Ademas, la alteracion del elemento sera gradual:
+
 
 ## Fuentes
 
 Una fuente de texto esta compuesta por varios archivos cuya extension puede variar segun el tipo de fuente que sea. Para ver los tipos de fuentes se puede visitar el siguiente [enlace](https://www.w3schools.com/css/css3_fonts.asp "W3 School: CSS3 Fonts"). Con CSS es posible importar las fuentes que el propio desarollador haya creado o tenga los archivos fisicos de las mismas. Ademas, usando este metodo, la fuente se descargara automaticamente en la computadora cliente, lo que quiere decir que no es necesario preoucuparse por setear fuentes de reemplazo.<br/>
 Para lograr esta tarea, sera necesario usar la regla "@font-face" que en cuya declaracion, habra dos propiedades que son obligatorias. Una de ellas sera <b>"font-family"</b>. En esta ocasion, se le debera asignar un nombre de fuente inventado, ya que se esta creando una propiea fuente en CSS. La otra propiedad sera <b>"src"</b>, a la cual se le asignara la ruta donde encuentre alojado el archivo de la fuente. Por ejemplo:
 
-```
+```css
 @font-face {
     font-family: mifuente; /* Es aconsejable usar solamente minusculas porque internet explorer puede presentar problemas */
     src: url('./fonts/Roboto-Regular.ttf');
@@ -700,7 +770,7 @@ div {
 
 Tambien es posible asignar un archivo para un estilo especifico de la fuente:
 
-```
+```css
 @font-face {
     font-family: mifuente;
     src: url('./fonts/Roboto-Bold.ttf');
@@ -713,7 +783,7 @@ div {
 }
 ```
 
-[Google Fonts](https://fonts.google.com/) tambien permite descargar los archivos de todas sus fuentes. Ademas proporciona estilos para cada una de ellas que pueden ser aplicados como clases. Para mas informacion, serguir este [enlace](https://developers.google.com/fonts/docs/getting_started)
+[Google Fonts](https://fonts.google.com/) tambien permite descargar los archivos de todas sus fuentes. Ademas proporciona estilos para cada una de ellas que pueden ser aplicados como clases. Mas informacion en el siguiente [enlace](https://developers.google.com/fonts/docs/getting_started).
 
 ## Funciones
 
@@ -721,7 +791,7 @@ div {
 
 Ambas funciones se encargan de generar un degradado entre dos o mas colores. Su sintaxis es la siguiente:
 
-```
+```css
 div {
     background: linear-gradient([direccion], color-stop1, color-stop2 [, color-stop3, ... , color-stopn]);
 }
@@ -729,7 +799,7 @@ div {
 
 Los parametros obligatorios de esta funcion son dos colores, que se denominan "color-stop". Estos serian los colores de los que se haran el degradado entre medio y los que finalmente apareceran los extremos de la pagina. Añadir mas color-stops es opcional y apareceran todos en el orden en que hayan sido asignados. Se puede a su vez, asignar una medida a cada color-stop para establecer el porcentaje que ocupara el mismo.
 
-```
+```css
 body {
     background: linear-gradient(yellow 70%, orange);
     background: linear-gradient(yellow, orange 1200px);
@@ -743,7 +813,7 @@ Otro parametro opcional es la direccion. El parametro por defecto es "to bottom"
 * **to left:** Los colores se imprimiran de la derecha hacia la izquierda en el orden en que se asignaron.<br/><br/>
 Tambien es posible combinar estos valores direccionales para generar cierto grado de inclinacion en el degradado. Por ejemplo:
 
-```
+```css
 body {
     background: linear-gradient(to left top, green, blue);
 }
@@ -751,7 +821,7 @@ body {
 
 Tambien es posible asignar un angulo para lograr una inclinacion mas precisa:
 
-```
+```css
 body {
     background: linear-gradient(75deg, violet, white);
 }
@@ -759,7 +829,7 @@ body {
 
 **radial-gradient** es una funcion similar, solo que el degradado de colores sera en forma de radio y no lineal. Su sintaxis es la siguente:
 
-```
+```css
 body {
     background: radial-gradient(forma tamaño at posicion, color-stop, color-stop2 [, color-stop3, ... , color-stopn]);
 }
@@ -773,4 +843,3 @@ Y por su parte, para modificar el tamaño:
 * farthest-side
 * closest-corner
 * farthest-corner
-
