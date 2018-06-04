@@ -7,6 +7,16 @@
     }
 }
 
+@keyframes rotation {
+    from {
+        left: -25%;
+    }
+    to {
+        left: 40%;
+        transform: rotate(360deg);
+    }
+}
+
 @font-face {
     font-family: roboto;
     src: url('./src/font/Roboto-Light.ttf');
@@ -39,6 +49,7 @@ div.blur {
 div.form {
     position: absolute;
     background-color: rgb(255, 255, 255, 0.9);
+    
     left: 40%;
     top: 40%;
     width: 20%;
@@ -48,6 +59,9 @@ div.form {
     outline: 1px transparent solid;
     transition-property: outline-color, opacity;
     transition-duration: 0.5s, 0.3s;
+    /* animation-name: rotation;
+    animation-duration: 1.5s; */
+    /* animation-fill-mode: forwards; */
 }
 
 div.form:hover {
@@ -93,6 +107,7 @@ input {
     background-color: transparent;
     width: 100%;
     height: 25px;
+    caret-color: #007ACB;
 }
 
 input:focus {

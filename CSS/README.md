@@ -909,6 +909,12 @@ La propiedad <b>"animation-direction"</b> permite determinar en que direccion ir
 * **reverse:** La animacion ira hacia atras (aplicara los estilos en orden descendente, del 100% al 0%).<br/>
 * **alternate:** La animacion ira alternando su direccion. La primer iteracion ira hacia adelante, la segunda hacia atras, la tercera hacia adelante y asi sucesivamente.<br/>
 * **alternate-reverse:** Exactamente igual que el valor "alternate" con la diferencia de que durante la primer iteracion, la animacion ira hacia atras.
+* **animation-delay:** Esta propiedad hace referencia al tiempo que tardara en comenzar la animacion. Su valor debe ser una unidad de tiempo.<br/><br/>
+
+Una animacion en CSS no altera el estilo original que un elemento tenga antes del primer frame de la animacion y depues del ultimo. La propiedad <b>"animation-fill-mode"</b> permite cambiar esto.
+
+
+* **animation-timing-function:** Su funcionamiento es el mismo que la propiedad "transition-timing-function" asi como sus valores.
 
 
 
