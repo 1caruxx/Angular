@@ -7,6 +7,7 @@ CSS (Cascading Style Sheets, por su traduccion al español, hojas de estilo en c
 * [Forma de uso](#forma-de-uso)
 * [Sintaxis](#sintaxis)<br>
 &nbsp;&nbsp;&nbsp;[Selectores](#selectores)<br/>
+&nbsp;&nbsp;&nbsp;[Combinadores](#combinadores)<br/>
 &nbsp;&nbsp;&nbsp;[Pseudo-clases](#pseudo-clases)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Pseudo-clase "child"](#pseudo-clase-child)<br/>
 &nbsp;&nbsp;&nbsp;[Pseudo-elementos](#pseudo-elementos)<br/>
@@ -21,11 +22,17 @@ CSS (Cascading Style Sheets, por su traduccion al español, hojas de estilo en c
 &nbsp;&nbsp;&nbsp;[Margin](#margin)<br/>
 &nbsp;&nbsp;&nbsp;[Padding y Box-sizing](#padding)<br/>
 &nbsp;&nbsp;&nbsp;[Texto](#texto)<br/>
+&nbsp;&nbsp;&nbsp;[Cursor](#cursor)<br/>
 &nbsp;&nbsp;&nbsp;[Display](#display)<br/>
 &nbsp;&nbsp;&nbsp;[Position y z-index](#position)<br/>
 &nbsp;&nbsp;&nbsp;[Float y Clear](#float-y-clear)<br/>
 &nbsp;&nbsp;&nbsp;[Box-shadow](#box-shadow)<br/>
 &nbsp;&nbsp;&nbsp;[Fuentes](#fuentes)<br/>
+&nbsp;&nbsp;&nbsp;[Transform](#transform)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Transformaciones bidimensionales](#transformaciones-bidimensionales)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Transformaciones tridimensionales](#transformaciones-tridimensionales)<br/>
+&nbsp;&nbsp;&nbsp;[Transition](#transition)<br/>
+* [Animaciones](#animaciones)<br/>
 * [Funciones](#funciones)
 
 ## Forma de uso
@@ -251,10 +258,10 @@ El selector "+" se usa para seleccionar aquella etiqueta que este junta a otra (
     </style>
 </head>
 <body>
-    <div><Hola mundo!></div> <---- Esta etiqueta no se vera afectada
-    <div><Hola mundo!></div> <---- Esta etiqueta si
+    <div>Hola mundo!</div> <---- Esta etiqueta no se vera afectada
+    <div>Hola mundo!</div> <---- Esta etiqueta si
     <br/>
-    <div><Hola mundo!></div> <---- Esta etiqueta no se vera afectada
+    <div>Hola mundo!</div> <---- Esta etiqueta no se vera afectada
 </body>
 ```
 
@@ -356,7 +363,7 @@ Los prefijos de proveedores son palabras que anteponen a una propiedad no estand
 ```
 Por ejemplo:
 
-```
+```css
 div{
     -webkit-user-select: none; /* Safari 3.1+. Si no se coloca, la propiedad no tendra efecto en Safari u otro exploradores basados en "webkit" */
     -moz-user-select: none; /* Firefox 2+ Si no se coloca, la propiedad no tendra efecto en Firefox */
@@ -635,6 +642,25 @@ Valores: bold (negrilla) | un numero que va desde el 100 al 900
 15) **font-variant:** Si se le asigna el valor "small-caps", transformara la fuente a una version en mayuscula pero mas pequeña de lo normal.
 16) **font:** Propiedad que engloba a "font-family" (requerido), "font-style", "font-size" (requerido), "font-weight" y "font-variant".
 
+## Cursor
+
+Permite modificar el cursor que se mostrara. Existen una serie de valores prefijados que se pueden observar a traves del siguiente [enlace](https://www.w3schools.com/cssref/pr_class_cursor.asp "W3 School: Cursor property").
+
+```css
+div:hover {
+    cursor: pointer; /* Cuando se pase el cursor por encima de cualquier elemento de tipo <div> el cursor se transformara en un señalador */
+}
+```
+Tambien se puede asignar una imagen como cursor:
+
+```css
+div:hover {
+    cursor: url('./cursor.png'), auto;
+}
+```
+
+Es importante añadir el valor "auto" para que de esta forma, el navegador ajuste su tamaño, por que los navegadores tienen una restriccion en el tamaño del cursor. Si esta es muy grande, el navegador no la mostrara.
+
 ### display
 
 Esta propiedad hace referencia a como seran mostrados los elementos en la pagina. Existen distintos valores que se le pueden asignar, entre los cuales, los mas importantes son:
@@ -749,7 +775,141 @@ Las funciones tridimensionales son:<br/>
 
 ### transition
 
-Esta propiedad especifica el lapso de tiempo que tardara un elemento en pasar de un estado, a otro. Ademas, la alteracion del elemento sera gradual:
+Esta propiedad especifica el lapso de tiempo que tardara un elemento en pasar de un estado, a otro. Ademas, la alteracion del elemento sera gradual. Esta propiedad engloba las siguientes propiedades:<br/>
+
+* **transition-duration:** Esta propiedad alude al tiempo que tardara un elemento en pasar de un estado a otro. Su valor sera una unidad de tiempo. Estas pueden ser expresadas en segundos (Xs) o milisegundos (Xms). Por ejemplo:
+
+```css
+div {
+    width: 50px;
+    height: 50px;
+    transition-duration: 0.8s;
+    background-color: white;
+}
+
+div:hover {
+    background-color: red;
+}
+```
+
+Cuando se pase el cursor por encima de un elemento `<div>`, el color de fondo cambiara de blanco a rojo, pero no lo hara instantaneamente, sino que atravezara por todos los matices de colores comprendidos entre el blanco y rojo en un lapso de 0.8 segundos. La propiedad "transition-duration" afectara de la misma forma cuando se pase el cursor por encima del elemento que cuando se quite del mismo. Sin embargo es posible alterar la transicion a gusto para los dos pasajes de estado.
+
+```css
+div {
+    width: 50px;
+    height: 50px;
+    transition-duration: 0.8s;
+    background-color: white;
+}
+
+div:hover {
+    transition-duration: 0.3s;
+    background-color: red;
+}
+```
+
+De esta forma, cuando se pase el cursor por encima del elemento, el tiempo que tardara este en pasar de un estado a otro sera de 0.3s y 0.8s cuando se quite el cursor.<br/>
+
+* **transition-property:** Esta propiedad determinara a que propiedades afectara la propiedad "transition". Como valores, recibira el nombre de otra propiedad. Si no es seteada, la propiedad "transition" afectara a todas las demas propiedades que esten seteadas en el elemento. Por ejemplo:
+
+```css
+div {
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    outline: solid 1px transparent;
+    transition-property: outline-color;
+    transition-duration: 0.8s;
+}
+
+div:hover {
+    background-color: orange;
+    outline-color: red;
+}
+```
+
+De esta forma, la propiedad "transition" solo afectara a la propiedad "outline", lo que quiere decir que cuando se pase el cursor por encima del elemento, el pasaje de un estado a otro para la propiedad "background-color" sera instantaneo. Tambien es posible asignar varias propiedades separandolas por comas:
+
+```css
+div {
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    outline: solid 1px transparent;
+    transition-property: outline-color, background-color;
+    transition-duration: 0.8s;
+}
+
+div:hover {
+    color: white;
+    background-color: orange;
+    outline-color: red;
+}
+```
+
+Para asignar una duracion a cada propiedad, se puede seguir el mismo criterio:
+
+```css
+transition-duration: 0.8s , 2s;
+```
+
+* **transition-delay:** Esta propiedad hace referencia al tiempo que tardara en comenzar a hacer efecto la propiedad "transition". Su valor tambien debe ser una unidad de tiempo.<br/>
+* **transition-timing-function:** Esta propiedad hace referencia a la curva de velocidad que tendra la transicion. Existen una serie de valores que se le pueden asignar:
+
+* **ease:** valor asignado por defecto. La transicion sera lenta al principio, luego acelerara y finalmente volvera a ser lenta
+* **linear:** La velocidad se mantendra constante a lo largo de toda la transicion.
+* **ease-in:** La transicion sera lenta al principio y ira aumentando de forma gradual hasta mantenerse constante.
+* **ease-out:** La transicion sera lenta al final.
+* **ease-in-out:**
+
+A su vez, es posible usar la funcion <b>"cube-bezier()"</b> para definir un efecto de transicion propio. http://cubic-bezier.com
+
+## Animaciones
+
+La animacion de un elemento consiste en el pasaje gradual de un estilo a otro. Para definir el nombre de la animacion asi como estos estilos y el orden en el que gradualmente se iran alternando, es necesario usar la regla <b>"@keyframes"</b>. Su sintaxis es la siguiente:
+
+```css
+@keyframes nombre-de-mi-animacion {
+    from { /* Este sera el estilo inicial que gradualmente ira mutando hasta convertirse en el estilo declarado abajo */
+        background-color: red;
+    }
+    to {
+        background-color: green;
+    }
+}
+
+div {
+    width: 50px;
+    height: 50px;
+    animation-name: nombre-de-mi-animacion; /* En esta linea estoy enlazando las animacion previamente creada con todos los elementos de tipo <div>, esta se reproducira solamente una vez cuando la pagina sea cargada */
+    animation-duration: 3s; /* Es importante setear el tiempo que durara la animacion ya que al igual que la propiedad "transition" su valor asignado por defecto es "0s" */
+}
+```
+
+En el anterior ejemplo dado se asignaron dos estilos a la animacion. Sin embargo, es posible asignar la cantidad de estilos que se desee usando porcentajes. Es mas, la palabra reservada "from" equivale a un porcentaje igual a 0% de la animacion total (el inicio de la animacion) y la palabra "to" equivale a un 100% (el final).
+
+```css
+@keyframes nombre-de-mi-animacion {
+    0% {
+        background-color: red; /* Cuando la animacion comience, el color del fondo del elemento que implemente esta animacion sera totalmente rojo */
+    }
+    /* Todos los valores intermedios seran matices entre el color rojo y blanco */
+    50% {
+        background-color: white; /* A la mitad de la animacion sera de color blanco */
+    }
+    100% {
+        background-color: blue; /* Y finalmente azul */
+    }
+}
+```
+
+La propiedad <b>"animation-iteration-count"</b> como su nombre lo indica, establecera la cantidad de iteraciones de la animacion, es decir, la cantidad de veces que esta se repetira. Sus valores pueden ser o un numero entero, o la palabra reservada "infinite" que repetira la animacion constantemente. Cuando una animacion llegue al 100% (termine), volvera a aplicar el estilo que se determino que estaria al 0% (vuelve a empezar) sucesivamente hasta cumplir la cantidad de iteraciones que se le paso como valor.<br/>
+La propiedad <b>"animation-direction"</b> permite determinar en que direccion ira la animacion. Sus posibles valores son:
+* **normal:** Su valor por defecto, lo que quiere decir que la animacion ira hacia adelante (aplicara los estilos en orden ascendente, del 0% al 100%).<br/>
+* **reverse:** La animacion ira hacia atras (aplicara los estilos en orden descendente, del 100% al 0%).<br/>
+* **alternate:** La animacion ira alternando su direccion. La primer iteracion ira hacia adelante, la segunda hacia atras, la tercera hacia adelante y asi sucesivamente.<br/>
+* **alternate-reverse:** Exactamente igual que el valor "alternate" con la diferencia de que durante la primer iteracion, la animacion ira hacia atras.
+
 
 
 ## Fuentes
