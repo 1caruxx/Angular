@@ -1,4 +1,4 @@
-# ![Logo](./icon.png) Introduccion a CSS
+# ![Logo](./src/icon.png) Introduccion a CSS
 
 CSS (Cascading Style Sheets, por su traduccion al español, hojas de estilo en cascada) es un lenguaje de estilos que permite personalizar y mejorar visualmente paginas. Puede ser escrito dentro del mismo template HTML o en un archivo externo el cual debe tener una extesion `.css`.
 
@@ -42,7 +42,7 @@ CSS (Cascading Style Sheets, por su traduccion al español, hojas de estilo en c
 Para añadir CSS a un  template, existen tres posibles formas.<br/>
 1) Enlazar el template con una hoja de estilos externas, para ello, se debera añadir la siguiente linea en la cabecera del template:
 
-```
+```html
 <link rel="stylesheet" type="text/css" src="./laUbicacionDelRecurso/recurso.css"/>
 ```
 
