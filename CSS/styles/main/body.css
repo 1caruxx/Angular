@@ -1,0 +1,4 @@
+body {
+    font-family: verdana;
+    margin: 0; /* El cuerpo de un template tiene cierto margen ceteado por defecto, si se desea que los elementos se peguen justo al borde, se debe setear a 0.*/
+}

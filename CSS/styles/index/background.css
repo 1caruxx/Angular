@@ -1,0 +1,22 @@
+html {
+    height: 100%;
+    animation-name: opacidad;
+    animation-duration: 1.5s;
+    animation-timing-function: linear;
+}
+
+body {
+    height: 100%;
+    background-image: url('../../src/background.jpg') ;
+    background-size: cover;
+    background-repeat: no-repeat; 
+    margin: 0;
+    font-family: roboto;
+    overflow: hidden;
+}
+
+div.blur {
+    height: 100%;
+    background: radial-gradient(circle, rgb(255, 255, 255, 0), black 150%);
+    position: relative;
+}

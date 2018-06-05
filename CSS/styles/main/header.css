@@ -1,0 +1,37 @@
+div.header {
+    position: relative;
+    height: 20%;
+    border: solid 2px red;
+    font-family: verdana;
+    text-align: center;
+}
+
+div.image-hero {
+    background-image: url('../../src/image7.jpg');
+    background-position-y: -180px;
+    background-repeat: no-repeat;
+    position: relative;
+    height: 100%;
+}
+
+div.opacity { /* Se setea un div con fondo semi transparente por encima de la imagen para deminurle la opacidad */
+    background-color: rgb(255, 255, 255, 0.6);
+    position: absolute;
+    height: 100%; /* Si la posicion es absoluta, se debe especificar el ancho y el alto.*/
+    width: 100%;
+    top: 0; /* El elemento estara en otro plano, pero por defecto se pondra mas abajo en la pagina */
+    left: 0;
+}
+
+div.header-logo {
+    position: absolute;
+    top: 44%;
+    left: 17%;
+}
+
+div.header-text {
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    font-size: 25px;
+}

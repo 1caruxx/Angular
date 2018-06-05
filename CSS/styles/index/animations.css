@@ -1,0 +1,18 @@
+@keyframes opacidad {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes rotation {
+    from {
+        left: -25%;
+    }
+    to {
+        left: 40%;
+        transform: rotate(360deg);
+    }
+}

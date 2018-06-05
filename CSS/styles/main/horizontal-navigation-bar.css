@@ -1,0 +1,74 @@
+ul.navigation-bar {
+    list-style-type: none;
+    background-color: black;
+    height: 50px;
+    border-radius: 0px 0px 30px 30px;
+    color: white;
+    overflow: hidden; /* Si no se oculta el overflow, la barra no se vera */
+    border-bottom: red solid 3px;
+    position: sticky;
+    top: 0;
+    margin: 0;
+    left: 5px;
+    right: 5px;
+    z-index: 2;
+    box-shadow: 0px 1px 10px black;
+}
+
+ul.navigation-bar > li {
+    float: left;
+    padding: 15px;
+    cursor: pointer;
+    -moz-user-select: none;
+    user-select: none;
+    transition: 0.2s;
+}
+
+ul.navigation-bar > li.icon {
+    font-size: 30px;
+    padding: 5px 15px;
+}
+
+ul.navigation-bar > li:hover {
+    background-color: rgb(53, 53, 53);
+}
+
+ul.navigation-bar a {
+    color: white;
+    text-decoration: none;
+}
+
+ul.navigation-bar li.image {
+    padding: 5px 35px;
+    float: right;
+}
+
+ul.navigation-bar img {
+    border: solid red 1px;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+}
+
+/* #region dropdown */
+.dropdown-content {
+
+    display: none;
+    position: absolute;
+    background-color: grey;
+    color: white;
+    z-index: 1;
+
+}
+
+.dropdown-content > li {
+
+    margin: 0;
+    padding: 0;
+    
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+/* #endregion */

@@ -5,19 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Pruebas CSS</title>
+    
     <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script type="text/javascript" src="./jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="./jquery-ui.min.js" ></script>
+
+    <script type="text/javascript" src="./vendor/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="./vendor/jquery-ui.min.js" ></script>
 
     <script type="text/javascript" src="./script.js"></script>
-    <link rel="stylesheet" href="./index-styles.css"/>
+    <link rel="stylesheet" href="./styles/index/main.css"/>
+
 </head>
 <body>
     <div class="blur"></div>
+
     <div class="form" id="form">
-        <div style="position: absolute;right: 16px; top: 16px;cursor: move;margin:0;" id="formMove"><i class="fa fa-arrows"></i> </div>
-        <label><img src="./icon.png" style="top: 15px;position: relative;"/> Iniciar sesion</label>
+        <div style="position: absolute;right: 16px; top: 16px;cursor: move;margin:0;" id="formMove">
+            <i class="fa fa-arrows"></i>
+        </div>
+        <label>
+            <img src="./src/icon.png" style="top: 15px;position: relative;"/> Iniciar sesion
+        </label>
         <input type="text" placeholder="example@outlook.com"/>
         <input type="password" placeholder="*******">
         <button id="button">Seguir</button>

@@ -32,7 +32,9 @@ CSS (Cascading Style Sheets, por su traduccion al español, hojas de estilo en c
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Transformaciones bidimensionales](#transformaciones-bidimensionales)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Transformaciones tridimensionales](#transformaciones-tridimensionales)<br/>
 &nbsp;&nbsp;&nbsp;[Transition](#transition)<br/>
-* [Animaciones](#animaciones)<br/>
+* [Animaciones](#animaciones)
+* [Fuentes](#fuentes)
+* [Importar estilos](#importar-estilos)
 * [Funciones](#funciones)
 
 ## Forma de uso
@@ -580,7 +582,7 @@ Esta propiedad hace referencia al espacio que hay entre el borde de un elemento 
 
 La propiedad "margin" engloba a estas cuatro anteriores y al igual que muchas propiedades derivadas de border, pueden asignarsele de uno a cuatro valores que seguiran el mismo orden en sentido de las agujas del reloj.<br/>
 Si dos elementos adyacentes tienen un margen de 25px cada uno, el espacio que habra entre los dos no sera de 50px (25px + 25px) sino de 25px. Esto se debe al "margin collapse" (o colapso de margenes), que establecera que el espacio entre dos elementos con un margen seteado sera equivalente al tamaño del margen mas grande que tenga alguno de los dos elementos.<br/>
-Esta propiedad es una buena forma de centrar (horizontalmente) un elemento siempre y cuando su propiedad "display" este seteada con el valor "block". Para conseguirlo se le debe asignar el valor "auto" a "margin".
+Esta propiedad es una buena forma de centrar (horizontalmente) un elemento siempre y cuando su propiedad "display" este seteada con el valor "block" y su propiedad "width" tambien este seteada con un valor diferente a 100%. Para conseguirlo se le debe asignar el valor "auto" a "margin".
 
 ### padding
 
@@ -683,7 +685,7 @@ La propiedad <b>"visibility"</b> puede cumplir una funcion similar a display=non
 Esta propiedad se encarga de posicionar un elemento en la pantalla. Segun el valor que se le asigne, el elemento tendra un comportamiento u otro. Los posibles valores para esta propiedad son:
 * **static:** Este es el valor por defecto de la propiedad. Los elementos seguiran el flujo normal de la pagina, lo que quiere decir que se posicionaran uno al lado del otro o debajo (segun el atributo display). Las propiedades "top", "right", "bottom" y "left" no tendran efecto mientras esta propiedad tenga este valor asignado. De ahi su nombre, "static".
 * **relative:** Su comportamiento es muy similar al valor "static" con la diferencia que sobre este si tendran efecto las propiedades "top", "right", "bottom" y "left".
-* **absolute:** Este valor provoca que el elemento no siga el flujo normal de la pagina, lo que quiere decir que podra estar por encima o debajo de otros elementos. Para determinar el plano en el que estara el elemento, se puede usar la propiedad <b>"z-index"</b>.
+* **absolute:** Este valor provoca que el elemento no siga el flujo normal de la pagina, lo que quiere decir que podra estar por encima o debajo de otros elementos. Por defecto, su posicion respetara el flujo normal de su elemento padre, pero este es perfectamente modificable. Para determinar el plano en el que estara el elemento, se puede usar la propiedad <b>"z-index"</b>.
 * **fixed:** El elemento estara en un flujo de la pagina diferente al igual que el valor "absolute" con la diferencia que este siempre se mostrara en pantalla, es decir, aunque se descienda demasiado, siempre sera visible, seguira el scroll del mouse.
 * **sticky:** Se comporta como un elemento cuya "position" sea igual a "relative", pero cuando se alcanza cierto desplazamiento con el scroll, este pasara a ser de valor "fixed". El desplazamiento que se debe alcanzar para que el elemento se transforme a "fixed" esta dado por las propiedades "top", "right", "bottom" y "left". Cuando el elemento este posicionado a la distancia establecida en estras propiedades, mutara a este valor.
 
@@ -708,7 +710,7 @@ Valores: left | right | both
 
 ### box-shadow
 
-Esta propiedad permite agregar una o varias sombras a un elemento. Funciona de la misma forma que la propiedad "**text-shadow**". Recibira de dos a cuatro valores. Los dos primeros valores son obligatorios y marcan la posicion de la sombra, el primero representa la posicion horizontal respecto al elemento y otro representa la posicion vertical:
+Esta propiedad permite agregar una o varias sombras a un elemento. Funciona de la misma forma que la propiedad "**text-shadow**". Recibira de dos a cinco valores. Los dos primeros valores son obligatorios y marcan la posicion de la sombra, el primero representa la posicion horizontal respecto al elemento y otro representa la posicion vertical:
 
 ```css
 .sombra {
@@ -716,7 +718,8 @@ Esta propiedad permite agregar una o varias sombras a un elemento. Funciona de l
 }
 ```
 
-Los valores opcionales son, la difuminacion "blur" al cual se le debe asignar una unidad de medida y el color.
+Los valores opcionales son, la difuminacion "blur" al cual se le debe asignar una unidad de medida, la extension de la sombra "spread" y el color.<br/>
+El orden es el siguiente: eje x > eje y > blur > spread > color.
 
 ### transform
 
@@ -809,6 +812,20 @@ div:hover {
 ```
 
 De esta forma, cuando se pase el cursor por encima del elemento, el tiempo que tardara este en pasar de un estado a otro sera de 0.3s y 0.8s cuando se quite el cursor.<br/>
+Es importante destacar que para que la propiedad funcione correctamente, esta debe tener un punto de partida asi como destino, por ejemplo:
+
+```css
+div {
+    background-color: orange;
+    border: solid 2px red;
+    transition: 0.5s;
+}
+
+div:hover {
+    width: 50%; /* Esta propiedad no se vera afectada por la transicion ya que no fue seteada previamente */
+    background-color: white; /* En cambio esta propiedad si */
+}
+```
 
 * **transition-property:** Esta propiedad determinara a que propiedades afectara la propiedad "transition". Como valores, recibira el nombre de otra propiedad. Si no es seteada, la propiedad "transition" afectara a todas las demas propiedades que esten seteadas en el elemento. Por ejemplo:
 
@@ -863,6 +880,22 @@ transition-duration: 0.8s , 2s;
 * **ease-in-out:**
 
 A su vez, es posible usar la funcion <b>"cube-bezier()"</b> para definir un efecto de transicion propio. http://cubic-bezier.com
+
+### filter
+
+Esta propiedad permite agregar efectos visuales a un elemento. Sus valores seran funciones que determinaran el tipo de efecto a aplicar. Las funciones son las siguiente:
+
+blur()
+brightness()
+contrast()
+drop-shadow()
+grayscale()
+hue-rotate()
+invert()
+opacity()
+saturate()
+sepia()
+url()
 
 ## Animaciones
 
@@ -950,6 +983,17 @@ div {
 ```
 
 [Google Fonts](https://fonts.google.com/) tambien permite descargar los archivos de todas sus fuentes. Ademas proporciona estilos para cada una de ellas que pueden ser aplicados como clases. Mas informacion en el siguiente [enlace](https://developers.google.com/fonts/docs/getting_started).
+
+## Importar estilos
+
+La regla "@import" permite hacer una copia exacta de una hoja de estilos y pegarla en otra. Esto resulta util para tener los estilos divididos en distintos archivos y como consecuencia un entorno mas ordenado.
+
+```css
+@import "./ruta-de-la-hoja-de-estilos/styles.css";
+@import url("./ruta-de-la-hoja-de-estilos/styles.css");
+```
+
+Seguido de la regla `@import` ira la ruta del archivo con extension `.css` que se quiere importar. Esta se puede plasmar en forma de string o usando la funcion `url()`. Los imports deben ser lo que primer se declare en el archivo. Una buena practica es tener un archivo principal cuya funcion sea solamente la de importar otros archivos de estilos. Este archivo sera el que finalmente sea enlazado en el template HTML.
 
 ## Funciones
 

@@ -1,0 +1,38 @@
+ul.vertical-navigation-bar {
+
+    list-style-type: none;
+    background-color: rgb(216, 216, 216);
+    position: sticky;
+    height: 100%;
+    width: 15%;
+    left: 0;
+    top: 0;
+    margin: 0;
+    padding: 60px 0px 0px 0px;
+    border-right: dashed 5px red;
+    background-clip: padding-box;
+    box-sizing: border-box;
+    overflow: auto;
+    float: left;
+}
+
+ul.vertical-navigation-bar li {
+    padding-left: 30px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    -moz-user-select: none;
+    user-select: none;
+    transition: 0.4s;
+}
+
+.titulo {
+    margin: 10px 0px;
+    color: red;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+ul.vertical-navigation-bar > li:hover:not(.titulo) {
+    background-color: rgb(255, 122, 122);
+    cursor: pointer;
+}
