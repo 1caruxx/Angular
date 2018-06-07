@@ -27,11 +27,11 @@ CSS (Cascading Style Sheets, por su traduccion al español, hojas de estilo en c
 &nbsp;&nbsp;&nbsp;[Position y z-index](#position)<br/>
 &nbsp;&nbsp;&nbsp;[Float y Clear](#float-y-clear)<br/>
 &nbsp;&nbsp;&nbsp;[Box-shadow](#box-shadow)<br/>
-&nbsp;&nbsp;&nbsp;[Fuentes](#fuentes)<br/>
 &nbsp;&nbsp;&nbsp;[Transform](#transform)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Transformaciones bidimensionales](#transformaciones-bidimensionales)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Transformaciones tridimensionales](#transformaciones-tridimensionales)<br/>
 &nbsp;&nbsp;&nbsp;[Transition](#transition)<br/>
+&nbsp;&nbsp;&nbsp;[Filter](#filter)<br/>
 * [Animaciones](#animaciones)
 * [Fuentes](#fuentes)
 * [Importar estilos](#importar-estilos)
@@ -52,7 +52,7 @@ El atributo "src" puede contener la direccion de un archivo fisico almacenado en
 <link rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/4/w3.css">
 ```
 
-2) Declarar explicitamente los estilos en el propio template, para ello, se declararan los estilos dentro de los tags "style" en el encabezado del template:
+2) Declarar explicitamente los estilos en el propio template, para ello, se declararan los estilos dentro de los tags `<style>` en el encabezado del template:
 
 ```html
 <head>
@@ -87,7 +87,7 @@ Si una etiqueta, tiene declarados varios estilos en distintas partes, el orden d
 ```
 3) Estilos predeterminaos del navegador en el cual se este visualizando el template.
 
-Esto se debe a la especificidad en CSS.
+Esto se debe a la [especificidad](#especificacion-en-css) en CSS.
 
 ## Sintaxis
 
@@ -109,7 +109,7 @@ p { color: red; background-color: black; }
 ```css
 div {
     background-color: red; /* Primero se setea el fondo de color rojo */
-    background-color: green; /* La declaracion anterior sera pisada por esta reasignando un valor a la misma propiedad, lo que quiere decir que el fondo del elemento sera verde. */
+    background-color: green; /* La declaracion anterior sera pisada por estar reasignando un valor a la misma propiedad, lo que quiere decir que el fondo del elemento sera verde. */
 }
 ```
 4) El valor, osea, como se desea que el aspecto sea modificado.
@@ -128,7 +128,7 @@ Para usar esta clase, se debe asignar su nombre a el atributo "class" del elemen
 
 El estilo se vera reflejado en todas las etiquetas que lo implementen.<br/>
 
-Tambien es posible asignar varias clases de esta forma:
+Tambien es posible asignar varias clases separandolas por espacios:
 
 ```html
 <div class="fondoRojo letrasGrandes">Hola mundo!</div>
@@ -661,7 +661,7 @@ div:hover {
 }
 ```
 
-Es importante añadir el valor "auto" para que de esta forma, el navegador ajuste su tamaño, por que los navegadores tienen una restriccion en el tamaño del cursor. Si esta es muy grande, el navegador no la mostrara.
+Es importante añadir el valor "auto" para que de esta forma, el navegador ajuste su tamaño, por que los navegadores tienen una restriccion en el tamaño del cursor. Si la imagen es muy grande, el navegador no la mostrara.
 
 ### display
 
@@ -883,19 +883,33 @@ A su vez, es posible usar la funcion <b>"cube-bezier()"</b> para definir un efec
 
 ### filter
 
-Esta propiedad permite agregar efectos visuales a un elemento. Sus valores seran funciones que determinaran el tipo de efecto a aplicar. Las funciones son las siguiente:
+Esta propiedad permite agregar efectos visuales a un elemento (que por lo general sera una imagen). Sus valores seran funciones que determinaran el tipo de efecto a aplicar. Las funciones son las siguiente:
 
-blur()
-brightness()
-contrast()
-drop-shadow()
-grayscale()
-hue-rotate()
-invert()
-opacity()
-saturate()
-sepia()
-url()
+* **blur():** Aplica un desenfoque gaussiano a un elemento. Como parametro se le paran una unidad de medida (pixeles).
+* **brightness()** Regula el brillo de un elemento. Se le puede pasar un porcentaje positivo. 0% hara el elemento totalemente negro, 100% mantendra el brillo original del elemento intacto y un valor superior a 100% aumentar el brillo. Tambien es posible pasar como parametro un flotante.
+* **contrast():** Regula el contraste de un elemento.
+* **drop-shadow():** Genera una sombra alrededor del elemento. Su comportamiento es muy similar al de la propiedad [box-shadow](#box-shadow), con la particularidad de que si se le aplica a una imagen con fondo transparente (`.png`), esta sombra contorneara la propia imagen y no los limites de la misma. El parametro "spread" no es compatible con la mayoria de navegadores, por lo que es recomendable evitarlo.
+* **grayscale():** Regula la escala de grises de un elemento. 0% mantendra al elemento intacto y 100% lo hara blanco y negro.<br/>
+* **hue-rotate():**
+* **invert():**
+* **opacity():** Regula la opacidad de un elemento. 0% hara el elemento totalemente transparente (invisible) y 100% mantendra el aspecto orginal del elemento. Tambien es posible pasar como parametro un valor comprendido entre 0 (inclusive) y 1 (inclusive).
+* **saturate():**
+* **sepia():** A aplica un flitro sepia al elemento. 0% mantendra el aspecto original del elemento y 100% lo hara totalemente sepia. Tambien es posible pasar como parametro un valor comprendido entre 0 (inclusive) y 1 (inclusive).
+* **url():**
+
+### object-fit
+
+Esta propiedad indica como una imagen o video se debe ajustar a su elemento contenedor. Sus valores seran:
+* **cover**
+* **contain**
+* **scale-down**
+
+### column
+
+Un elemento puede divirse en distintas columnas (siempre del mismo tamaño) facilmente con todas las propiedades derivadas de <b>"column"</b>:
+* **column-count:** Define en cuantas columnas estara dividido el elemento. Su valor sera un numero entero.<b>
+* **column-gap:** Define el espacio que habra entre columna y columna.<br>
+
 
 ## Animaciones
 
@@ -994,6 +1008,45 @@ La regla "@import" permite hacer una copia exacta de una hoja de estilos y pegar
 ```
 
 Seguido de la regla `@import` ira la ruta del archivo con extension `.css` que se quiere importar. Esta se puede plasmar en forma de string o usando la funcion `url()`. Los imports deben ser lo que primer se declare en el archivo. Una buena practica es tener un archivo principal cuya funcion sea solamente la de importar otros archivos de estilos. Este archivo sera el que finalmente sea enlazado en el template HTML.
+
+## Variables
+
+Una variable es un dato que se asocia a un identificador y que puede cambiar a lo largo de la vida de un programa. En CSS es posible la creacion de variables. Estas deberan ser declaradas dentro de un selector que a su vez determinara su rango de visibilidad. El identificador de una variable, siempre sera antecedido por dos guiones medios "--". Para acceder al valor de la variables, se debera usar la funcion <b>"var()"</b> a la que se le pasara como parametro, el identificador de la variable.
+Por ejemplo:
+
+```css
+div {
+    --color: #007ACC; /* Declaracion de la variable */
+    background-color: var(--color); /* Accediendo al valor de la variable */
+}
+```
+
+Esta variable "--color" solo tendra efecto en elementos de tipo `<div>` o sucesores de este. Por ejemplo:
+
+```html
+<head>
+    <style>
+        div { --color: #007ACC; }
+        span { background-color: var(--color); }
+    </style>
+</head>
+
+<body>
+    <div>
+        <span>Hola mundo!</span> <!-- Su fondo sera de color azul al ser hijo directo de un elemento <div> -->
+    </div>
+
+    <div>
+        <span>
+            <span>Hola mundo!</span> <!-- Su fondo tambien sera de color azul al ser descendiente de un elemento <div> -->
+        </span>
+    </div>
+
+    <span>Hola mundo!</span> <!-- Su fondo NO sera de color azul al no tener ninguna relacion con un elemento <div> -->
+</body>
+```
+
+Para crear una variable cuya visibilidad sea global, esta debera ser declarada en el selector html, body o el selector <b>:root</b> que hara refencia al elemento root de un documento (en el caso de un documento de tipo HTML, la etiqueta `<html>` es la etiqueta root o principal).
 
 ## Funciones
 

@@ -1,0 +1,73 @@
+@keyframes sombreado {
+    from {
+        opacity: 0.5;
+        width: 0%;
+        height: 0%;
+        top: 50%;
+        left: 50%;
+        border-radius: 100%;
+    }
+    to {
+
+        opacity: 0;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        border-radius: 0;
+    }
+}
+
+button {
+    background-color: #f4511e;
+    border: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+    font-size: 20px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    padding: 10px;
+
+    overflow: hidden;
+    outline: solid 1px transparent;
+    transition: 0.3s;
+}
+
+button:hover {outline: solid 1px blue;}
+
+/* div.circle-effect {
+    position: absolute;
+    width: 0%;
+    height: 0%;
+    left: 50%;
+    top: 50%;
+    border-radius: 100%;
+    background-color: black;
+    opacity: 0;
+    z-index: 1;
+} */
+
+div.circle-effect {
+    position: absolute;
+    background-color: black;
+    z-index: 1;
+}
+
+/* button:active > div.circle-effect {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    transition: 0.4s;
+    animation-name: sombreado;
+    animation-duration: 0.5s;
+} */
+
+
+/* button:active > div.circle-effect {
+    
+    animation-name: sombreado;
+    animation-duration: 0.5s;
+} */
