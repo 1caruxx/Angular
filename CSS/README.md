@@ -32,6 +32,8 @@ CSS (Cascading Style Sheets, por su traduccion al español, hojas de estilo en c
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Transformaciones tridimensionales](#transformaciones-tridimensionales)<br/>
 &nbsp;&nbsp;&nbsp;[Transition](#transition)<br/>
 &nbsp;&nbsp;&nbsp;[Filter](#filter)<br/>
+&nbsp;&nbsp;&nbsp;[Column](#column)<br/>
+&nbsp;&nbsp;&nbsp;[Resize](#resize)
 * [Animaciones](#animaciones)
 * [Fuentes](#fuentes)
 * [Importar estilos](#importar-estilos)
@@ -602,7 +604,7 @@ Valores: uppercase | lowercase | capitalize
 5) **text-indent:** Hace referencia a la sangria del texto.
 6) **letter-spacing:** Hace referencia al espaciado que debe haber entre los caracteres. Es posible asignarle un valor negativo para que los caracteres esten mas juntos entre si.
 7) **word-spacing:** Hace referencia al espaciado que debe haber entre palabra y palabra. Es posible asignarle un valor negativo para que las palabras esten mas juntas entre si.
-8) **line-height:** Hace referencia al espaciado que debe haber entre linea y linea.
+8) **line-height:** Hace referencia al espaciado que debe haber entre linea y linea. Es una buena forma para centrar verticalmente texto dentro de su contenedor. Para ello se debera aplicar el mismo tamaño que el alto del elemento contendor.
 9) **text-shadow:** Añade una sombra al texto. Puede recibir de dos a cuatro valores. Dos valores son requeridos y representaran la posicion de la sombra respecto al texto. El primero sera la posicion horizontal y el segundo la vertical. Se le deberan pasar unidades de medida que pueden ser positivas asi como tambien negativas. En el caso de la posicion horizontal, si se le asigna un valor negativo, la sombra se posicionara al izquierda del elemento y respecto a la posicion vertical, por encima. Los otros dos valores opcionales seran el color y la difuminacion. Tambien es posible asignar varias sombras si se las separa con comas.
 
 ```css
@@ -747,8 +749,8 @@ div {
 ```
 
 Si se le pasa un valor positivo, el elemento rotara en el sentido de las agujas del reloj, caso contrario si el valor es negativo.<br/>
-* **scale():** Esta funcion permite alterar el tamaño original de un elemento. Recibira dos valores que pueden ser un numero entero o flotante que multiplicara la anchura (primer valor) o la altura (segundo valor). Si se le pasa un numero mayor que 0 y menor que uno, disminuira el tamaño del elemento y si se le pasa un numero menor que cero, lo invertira. Las funciones "scaleX()" y "scaleY()" permiten alterar ambos ejes de forma individual.<br/>
-* **skew():**<br/>
+* **scale():** Esta funcion permite alterar el tamaño original de un elemento. Recibira dos valores que pueden ser un numero entero o flotante que multiplicara la anchura (primer valor) o la altura (segundo valor). Si se le pasa un numero mayor que 0 y menor que uno, disminuira el tamaño del elemento y si se le pasa un numero menor que cero, lo invertira. Las funciones "scaleX()" y "scaleY()" permiten alterar ambos ejes de forma individual.
+* **skew():**
 * **matrix():** Permite agrupar todas las funciones anteriormente nombradas en una misma (exceptuando la funcion rotate()). Su sintaxis sera la siguiente:
 
 ```css
@@ -889,7 +891,7 @@ Esta propiedad permite agregar efectos visuales a un elemento (que por lo genera
 * **brightness()** Regula el brillo de un elemento. Se le puede pasar un porcentaje positivo. 0% hara el elemento totalemente negro, 100% mantendra el brillo original del elemento intacto y un valor superior a 100% aumentar el brillo. Tambien es posible pasar como parametro un flotante.
 * **contrast():** Regula el contraste de un elemento.
 * **drop-shadow():** Genera una sombra alrededor del elemento. Su comportamiento es muy similar al de la propiedad [box-shadow](#box-shadow), con la particularidad de que si se le aplica a una imagen con fondo transparente (`.png`), esta sombra contorneara la propia imagen y no los limites de la misma. El parametro "spread" no es compatible con la mayoria de navegadores, por lo que es recomendable evitarlo.
-* **grayscale():** Regula la escala de grises de un elemento. 0% mantendra al elemento intacto y 100% lo hara blanco y negro.<br/>
+* **grayscale():** Regula la escala de grises de un elemento. 0% mantendra al elemento intacto y 100% lo hara blanco y negro.
 * **hue-rotate():**
 * **invert():**
 * **opacity():** Regula la opacidad de un elemento. 0% hara el elemento totalemente transparente (invisible) y 100% mantendra el aspecto orginal del elemento. Tambien es posible pasar como parametro un valor comprendido entre 0 (inclusive) y 1 (inclusive).
@@ -908,8 +910,95 @@ Esta propiedad indica como una imagen o video se debe ajustar a su elemento cont
 
 Un elemento puede divirse en distintas columnas (siempre del mismo tamaño) facilmente con todas las propiedades derivadas de <b>"column"</b>:
 * **column-count:** Define en cuantas columnas estara dividido el elemento. Su valor sera un numero entero.<b>
-* **column-gap:** Define el espacio que habra entre columna y columna.<br>
+* **column-gap:** Define el espacio que habra entre columna y columna. No tendra efecto si la propiedad "column-count" no es seteada.
+* **column-rule:** Define una linea divisora entre columnas. Esta propiedad engloba a las propiedades <b>"column-rule-style"</b>, <b>"column-rule-color"</b> y <b>"column-rule-width"</b>. No tendra efecto si la propiedad "column-count" no es seteada.
+* **column-rule-width:** Define una anchura para las columnas. Esta propiedad no tendra efecto si la propiedad "column-count" es seteada ya que el navegador ira creando las columnas en base al contenido y la anchura.
+* **column-fill:** Esta propiedad determina como deben ser llenadas las columnas. Puede recibir los siguientes valores:
+<b>"balance":</b> Valor asignado por defecto a la propiedad. El contenido sera asignado a cada columna de tal forma que ocupe todas las columnas y con el mismo alto.<br/>
+<b>"auto":</b> Para notar el funcionamiento de esta propiedad, es necesario setearle un alto al elemento. El contenido ocupara una columna y cuando este por desbordar el alto, ocupuara la siguiente columna. Este valor no respeta la propiedad "column-count" ya que ocupara una cantidad de columnas basadas en el contenido.
 
+### resize
+
+Permite al usuario ajustar el tamaño de un elemento. Para su correcto funcionamiento, es necesario setear la propiedad  <b>"overflow"</b> con el valor <b>"auto"</b>. Sus posibles valores son:
+<b>"horizontal":</b> Permite al usuario regular el tamaño horizontal de un elemento.
+<b>"vertical":</b> Permite al usuario regular el tamaño vertical de un elemento.
+<b>"both":</b> Permite al usuario regular el tamaño de ambos ejes de un elemento.
+
+## flexbox layout
+
+Para posicionar elementos en el DOM, se dispone de diversas propiedades que permitian cumplir esta tarea. "display", "position", "float", "top", "right", "bottom", "left" etc. La tarea de situar un elemento en la pagina de una manera precisa acorde a las intenciones del desarollador resulta algo complicado. Es por esta razon que CSS brinda una herramienta mas compleja pero que facilita el proceso a largo plazo, **crear elementos flexibles**. Crear elementos flexibles permitira posicionar elementos de forma mas facil y precisa. Para comenzar, se debe crear un elemento contendor flexible (un elemento de tipo `<div>` puede ser el mejor ejemplo).
+
+```css
+div.container {
+    display: flex; /* El elemento se vuelve flexible */
+    background-color: orange;
+}
+
+div.content {
+    width: 50px;
+    height: 50px;
+    background-color: grey;
+    line-height: 50px;
+    text-align: center;
+    color: white;
+}
+```
+
+Los elementos hijos directos de este contenedor se volveran flexibles, lo que quiere decir que en base a las propiedades que se le seteen a su elemento contenedor, tendran un comportamiento u otro y no el convencional.
+
+```html
+<body>
+    <div class="container">
+        <div class="content">1</div>
+        <div class="content">2</div>
+        <div class="content">3</div>
+        <div class="content">4</div>
+        <div class="content">5</div>
+    </div>
+</body>
+```
+
+Los elementos que estan en el interior del contenedor, se colocaran uno al lado de otro, sin dejar espacio de por medio. Un comportamiento muy similar al de la propiedad `float: left;`. Esto se debe a la propiedad <b>"flex-directon"</b>. Esta propiedad determina la direccion en la que se mostraran los elementos hijos del contenedor. Su valor por defecto es "row" (fila) y esta es la razon por la que se muestran asi. Si si quieren mostrar los elementos en forma de columna, se puede asignar el valor "column".
+
+```css
+div.container {
+    display: flex;
+    flex-wrap: column;
+}
+```
+
+A su vez, si se quieren mostrar los elementos en el orden inverso, se deben usar los valores "row-reverse" o "column-reverse". El comportamiento del valor "row-reverse" es el mismo que `float: right;`.<br/>
+
+```css
+div.container {
+    display: flex;
+    flex-wrap: row-reverse;
+}
+```
+
+A su vez, si se colocan muchos elementos dentro del contenedor, estos adaptaran su tamaño para caber dentro, reduciendose en el caso de que sea necesario. Esto es por la propiedad <b>"flex-wrap"</b> cuyo valor seteado por defecto es "nowrap". Esto quiere decir que los elementos solo se mostraran en una linea o columna. Si se quiere que los elementos, al llegar al limite del contenedor, se dispongan en otra fila o columna, se le debera asignar el valor "wrap". Tambien se puede asignar el valor "wrap-reverse" para invertir el efecto como se hacia con la propiedad "flex-direction".
+
+```css
+div.container {
+    height: 200px; /* Se setea un alto maximo ya que por defecto, el <div> adaptat su alto al contenido, por lo que el efecto wrap en columnas no se podria ver de otra forma */
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap-reverse;
+}
+```
+
+La propiedad <b>"flex-flow"</b> engloba las anteriores dos propiedades mencionadas.<br/>
+<b>"justify-content"</b> es una propiedad que permite alinear HORIZONTALMENTE los elementos flexibles de un contenedor. Por defecto su valor es "flex-start" que colocara los elementos al principio del contenedor. Su contraparte es "flex-end" que los situara al final. El valor "center" los alinear en el centro del contenedor (esta es una muy buena forma para centrar elementos perfectamente). "space-around" colocara espacios entre los elementos de forma que queden "justificados" dentro de su elemento contenedor. "space-between" tiene un comportamiento muy similar, solamente que el primer y ultimo elemento estaran pegados a los margenes de su elemento contenedor.<br/>
+
+```css
+div.container {
+    display: flex;
+    justify-content: center;
+}
+```
+
+Asi como la propiedad "justify-content" permitia alinear el contenido horizontalmente, "align-items" permite alinearlos VERTICALMENTE. Su valor por defecto es "stretch" que hara que los elementos ocupen todo el alto de su contenedor. Para ver el efecto, es necesario setearle un alto al elemento contenedor por no a sus elementos. Los valores "flex-start", "flex-end" y "center" se mantienen iguales ("space-between" y "space-around" no estan disponibles para esta propiedad). "baseline" permitira alinear
+<b>"align-content"</b> permite alinear las filas y columnas dibujadas por los elementos. Sus valores son los mismos que las anteriores propiedades.
 
 ## Animaciones
 
@@ -960,10 +1049,7 @@ La propiedad <b>"animation-direction"</b> permite determinar en que direccion ir
 
 Una animacion en CSS no altera el estilo original que un elemento tenga antes del primer frame de la animacion y depues del ultimo. La propiedad <b>"animation-fill-mode"</b> permite cambiar esto.
 
-
 * **animation-timing-function:** Su funcionamiento es el mismo que la propiedad "transition-timing-function" asi como sus valores.
-
-
 
 ## Fuentes
 
