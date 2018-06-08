@@ -60,11 +60,11 @@ Header 1
 Header 2
 ------------------
 
-En github, estos encabezados, se autogeneran un id a si mismos que seran el propio texto del encabezado reemplazando todos los espacios por guiones medios y mayusculas por minusculas. Esto quiere decir que es posible generar un vinculo para desplazar al usuario automaticamente a ese encabeado de la siguiente forma.
+En github, estos encabezados, se autogeneran un id a si mismos que seran el propio texto del encabezado reemplazando todos los espacios por guiones medios y mayusculas por minusculas. Esto quiere decir que es posible generar un vinculo para desplazar al usuario automaticamente a ese encabezado de la siguiente forma.
 
 \[Encabezado 1\](#header-1)
 
-Esta es la sintaxis para declarar un enlace (mas informacion en el siguiente [vinculo](#links)). El numeral "#" se debe colocar por delante de la direccion para especificiar que se trara de un id de la propia pagina. Esto tiene cierta relacion con el tipo de sintaxis que usa <a href="https://github.com/1caruxx/Angular/tree/master/CSS#sintaxis" title="Explicacion de CSS en mi github">CSS</a>.
+Esta es la sintaxis para declarar un enlace (mas informacion en el siguiente [vinculo](#links)). El numeral "#" se debe colocar por delante de la direccion para especificiar que se trara de un id de la propia pagina. Esto tiene cierta relacion con el tipo de sintaxis que usa <a href="https://github.com/1caruxx/Angular/tree/master/CSS#sintaxis" title="Explicacion de CSS en mi github" target="_blank">CSS</a>.
 
 ### Italica
 
