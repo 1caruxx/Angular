@@ -395,7 +395,7 @@ Un snippet es un trozo de codigo que se almacena que se almacena en un archivo d
 La creacion de un snippet varia entre editor y editor, pero se matienen ciertas reglas. Dependiendo del editor, los snippets sera almacenados en un solo archivo o varios. En el caso de VS code (el editor que estoy usando actualmente), se almacenan en varios archivos de formato JSON.<br/>
 El primer paso, sera elegir el scope (entorno o lenguaje) en el que tendra validez el snippet. En el caso de que se este usando VS Code, se debera ir a Archivo > Preferencias > Fragmento de codigo del usuario y luego seleccionar un lenguaje.
 
-<img src="./img/snippet_vs_code_new.jpg" alt="VS code layout" style="width: 654px; heigth: auto;"/>
+<img src="./img/snippet_vs_code.jpg" alt="VS code layout" style="width: 654px; heigth: auto;"/>
 
 Automaticamente se generara un archivo el la siguiente ruta: `C:\Users\%Usuario_actual%\AppData\Roaming\Code\User\snippets` con el nombre del lenguaje y extension `.json`.<br/>
 Entre la apertura y cierre de llaves generadas por el archivo, se debera insertar un JSON con el siguiente formato:
