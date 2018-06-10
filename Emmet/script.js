@@ -1,26 +1,12 @@
-$(document).ready(function() {
-    $("#btn").click(function() {
+import { FuncionesPropias } from "./lib.js";
 
-        $.ajax({
-            url: "",
-            type: "POST",
-            data: "",
-            dataType: "json",
-            async: true
-        })
-        .done(function (response) {
-            
-        })
-        .fail(function (response) {
-            
-        });
-        alert("Hola Mundo!");
-        click
-        click
-        click
-        click
-$("").click(function() {
-    
-}); 
-    });
+$(document).ready(function() {
+
+  var foo = [
+    {"nombre": "fernando", "apellido": "lareu", "edad": 20},
+    {"nombre": "pedro", "apellido": "mmendex", "edad": 24, "nacionalidad": "argentina"},
+    {"nombre": "luis", "apellido": "fabrichi", "edad": 60, "color de ojos": "azules"},
+  ];
+
+console.log(FuncionesPropias.AnalizadorDePropiedades(foo));
 });

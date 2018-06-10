@@ -16,17 +16,13 @@ Dependiendo del editor en el cual se quiera instalar Emmet, habra que seguir uno
 
 ## Sintaxis
 
-Emmet toma el concepto de "snippet" y lo lleva mas alla generando una [sintaxis basada en CSS](). Como se ha dicho previamente, la sintaxis de Emmet es aplicable a los lenguajes HTML y CSS y sus abreviaciones seran detectadas en base a la extension del archivo.
+Emmet toma el concepto de ["snippet"](#snippets) y lo lleva mas alla generando una [sintaxis basada en CSS](). Como se ha dicho previamente, la sintaxis de Emmet es aplicable a los lenguajes HTML y CSS y sus abreviaciones seran detectadas en base a la extension del archivo.
 
 ### HTML
 
 El ejemplo mas basico de los beneficios que puede brindar Emmet, es el ahorro de escribir las etiquetas. Simplemente escribiendo el nombre de una etiqueta y pulsando tabulacion o enter (dependiendo del editor), generara la etiqueta de apertura y cierre. Por ejemplo, si se escribe `div` y se pulsa enter, se generara automaticamente `<div></div>`.<br/> Si bien muchos editores ya tienen esta funcion integrada por defecto, forma parte de la sintaxis de Emmet.
 
-
 ![Div snippet](./img/emmet_div.gif)
-
-
-
 
 Ademas, dependiendo la etiqueta que sea escrita, Emmet añadira atributos que son imprescindibles para el funcionamiento caracteristido de la etiqueta. Por ejemplo, si se escribe el nombre de la etiqueta `<a></a>`, Emmet producira:
 
@@ -370,13 +366,36 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, autem.
 
 ### CSS
 
+El sistema de snippets que Emmet presenta para un codigo escrito en CSS varia del HTML. Ahora, se usan solo abreviaciones que formaran la propiedad completa, por ejemplo:
+
+```
+m ---> margin: ;
+ml --> margin-left: ;
+p ---> padding: ;
+```
+
+El sistema de abreviaciones que ofrece Emmet no es totalmente estricto e interpretara hasta cierto punto las abreviaciones escritas. Por ejemplo:
+
+```
+bgc --> background-color: ;
+bgcr -> background-color: ;
+bgco -> background-color: ;
+```
+
+Lo que quiere decir, que respetando cierta logica, una propiedad puede escribirse con multitud de abreviaciones. Tambien es posbile asignar una unidad de medida en la propia abreviacion:
+
+
+```
+m10 --> margin: 10px;
+```
+
 ## Snippets
 
 Un snippet es un trozo de codigo que se almacena que se almacena en un archivo de configuracion propio del editor en el que se este trabajando que posee una abreviacion o prefijo con el que puede ser invocado. Mismamente, el caracter "!" es un snippet proporcionado por Emmet que imprime en el archivo la estructura basica de un template HTML. El concepto de snippet no solo se limita a Emmet, sino que es posible crear snippets propios para cualquier lenguaje.<br/>
 La creacion de un snippet varia entre editor y editor, pero se matienen ciertas reglas. Dependiendo del editor, los snippets sera almacenados en un solo archivo o varios. En el caso de VS code (el editor que estoy usando actualmente), se almacenan en varios archivos de formato JSON.<br/>
 El primer paso, sera elegir el scope (entorno o lenguaje) en el que tendra validez el snippet. En el caso de que se este usando VS Code, se debera ir a Archivo > Preferencias > Fragmento de codigo del usuario y luego seleccionar un lenguaje.
 
-![VS code layout](./img/snippet_vs_code_new.jpg)
+<img src="./img/snippet_vs_code_new.jpg" alt="VS code layout" style="width: 654px; heigth: auto;"/>
 
 Automaticamente se generara un archivo el la siguiente ruta: `C:\Users\%Usuario_actual%\AppData\Roaming\Code\User\snippets` con el nombre del lenguaje y extension `.json`.<br/>
 Entre la apertura y cierre de llaves generadas por el archivo, se debera insertar un JSON con el siguiente formato:
@@ -420,4 +439,20 @@ Produce:
 
 ![Snippet gif](./img/snippet.gif)
 
-El simbolo de pesos "$" marcara una parada, es decir, la posicion donde el cursor permanecera. El numero que se le coloca al lado, indica el orden. Si se usa el numero 0, representa la ultima parada. Se puede navegar entre paradas
+El simbolo de pesos "$" marcara una parada, es decir, la posicion donde el cursor permanecera. El numero que se le coloca al lado, indica el orden. Si se usa el numero 0, representa la ultima parada. Se puede navegar entre paradas pulsando tabulacion. Ademas, si el numero de la parada se asocia a una palabra de la siguiente manera `${n:palabra}`, se creara un "placeholder" y se seleccionara automaticamente cuando se posicione el cursor.<br/>
+Para crear varios snippets, se deben separar por comas:
+
+```json
+"identificador": {
+    "prefix": "",
+    "body": "",
+    "description": ""
+},
+"identificador": {
+    "prefix": "",
+    "body": "",
+    "description": ""
+}
+```
+
+Anotacion: En el caso de que escribiendo el prefijo, el snippet no entre en funcionamiento, reiniciar el editor pueder resolver el problema.
