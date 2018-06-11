@@ -22,7 +22,7 @@ Emmet toma el concepto de ["snippet"](#snippets) y lo lleva mas alla generando u
 
 El ejemplo mas basico de los beneficios que puede brindar Emmet, es el ahorro de escribir las etiquetas. Simplemente escribiendo el nombre de una etiqueta y pulsando tabulacion o enter (dependiendo del editor), generara la etiqueta de apertura y cierre. Por ejemplo, si se escribe `div` y se pulsa enter, se generara automaticamente `<div></div>`.<br/> Si bien muchos editores ya tienen esta funcion integrada por defecto, forma parte de la sintaxis de Emmet.
 
-![Div snippet](./img/emmet_div.gif)
+![Div snippet](./img/emmet-div.gif)
 
 Ademas, dependiendo la etiqueta que sea escrita, Emmet añadira atributos que son imprescindibles para el funcionamiento caracteristido de la etiqueta. Por ejemplo, si se escribe el nombre de la etiqueta `<a></a>`, Emmet producira:
 
@@ -395,7 +395,7 @@ Un snippet es un trozo de codigo que se almacena que se almacena en un archivo d
 La creacion de un snippet varia entre editor y editor, pero se matienen ciertas reglas. Dependiendo del editor, los snippets sera almacenados en un solo archivo o varios. En el caso de VS code (el editor que estoy usando actualmente), se almacenan en varios archivos de formato JSON.<br/>
 El primer paso, sera elegir el scope (entorno o lenguaje) en el que tendra validez el snippet. En el caso de que se este usando VS Code, se debera ir a Archivo > Preferencias > Fragmento de codigo del usuario y luego seleccionar un lenguaje.
 
-![VS code layout](./img/snippet_vs_code.jpg)
+![VS code layout](./img/snippet-vs-code.jpg)
 
 Automaticamente se generara un archivo el la siguiente ruta: `C:\Users\%Usuario_actual%\AppData\Roaming\Code\User\snippets` con el nombre del lenguaje y extension `.json`.<br/>
 Entre la apertura y cierre de llaves generadas por el archivo, se debera insertar un JSON con el siguiente formato:
