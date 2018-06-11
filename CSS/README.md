@@ -909,7 +909,7 @@ Esta propiedad indica como una imagen o video se debe ajustar a su elemento cont
 ### column
 
 Un elemento puede divirse en distintas columnas (siempre del mismo tamaño) facilmente con todas las propiedades derivadas de <b>"column"</b>:
-* **column-count:** Define en cuantas columnas estara dividido el elemento. Su valor sera un numero entero.<b>
+* **column-count:** Define en cuantas columnas estara dividido el elemento. Su valor sera un numero entero.
 * **column-gap:** Define el espacio que habra entre columna y columna. No tendra efecto si la propiedad "column-count" no es seteada.
 * **column-rule:** Define una linea divisora entre columnas. Esta propiedad engloba a las propiedades <b>"column-rule-style"</b>, <b>"column-rule-color"</b> y <b>"column-rule-width"</b>. No tendra efecto si la propiedad "column-count" no es seteada.
 * **column-rule-width:** Define una anchura para las columnas. Esta propiedad no tendra efecto si la propiedad "column-count" es seteada ya que el navegador ira creando las columnas en base al contenido y la anchura.
