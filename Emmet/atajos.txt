@@ -15,6 +15,7 @@ ALT + SHIFT + TAB:
 START + TAB:
 CTRL + TAB:
 START + espacio: Alterna entre el idioma del teclado
+CTRL + SHIFT + R:
 
 Visual Studio Code
 
@@ -22,6 +23,7 @@ Visual Studio Code
 CTRL + }: Documentar texto seleccionado, se ajusta automaticamente segun la extension del archivo.
 CTRL + ¡: Aplica una tabulacion al texto seleccionado.
 CTRL + ': Quita una tabulacion al texto seleccionado.
+CTRL + space:
 CTRL + K -> F: Cierra el area de trabajo actual (el directorio del proyecto).
 CTRL + S: Guarda el archivo que se este editando actualmente.
 CTRL + K -> S: Guarda todos los archivos del area de trabajo.

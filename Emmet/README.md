@@ -1,4 +1,4 @@
-# ![Logo](./icon.png) Emmet
+# ![Logo](./img/icon.png) Emmet
 
 [Emmet](https://emmet.io/ "Sitio oficial de Emmet") es un plugin disponible para una gran cantidad de editores de codigo que permite escribir de una forma mas sencilla y rapida. Su sintaxis sera adaptable a los lenguajes HTML y CSS.
 
