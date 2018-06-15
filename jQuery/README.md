@@ -1,11 +1,11 @@
-# ![Logo](./icon.png) Jquery
+# ![Logo](./icon.png) jQuery
 
-[jQuery](https://jquery.com/ "Pagina oficial de jQuery") es una de las librerias mas famosas de javascript que tiene como objetivo el facilitar la sintaxis de este lenguaje, permitiendo que el obtener objetos del DOM, manejar eventos, establecer conexciones asincronas, etc., sean tareas mas simples.
+[jQuery](https://jquery.com/ "Pagina oficial de jQuery") es una de las librerias mas famosas de javascript. Tiene como objetivo el facilitar la sintaxis de este lenguaje, permitiendo que el obtener objetos del DOM, manejar eventos, establecer conexciones asincronas, etc., sean tareas mas simples.
 
 ## Tabla de contenidos
 
 * [Descarga y uso](#descarga-y-uso)
-* [Sintaxis](#sintaxis)
+* [Sintaxis](#sintaxis)<br/>
 &nbsp;&nbsp;&nbsp;[Obtencion de elementos del DOM](#obtencion-de-elementos-del-dom)
 
 ## Descarga y uso
@@ -30,7 +30,7 @@ npm install --save jquery
 ```
 El archivo se encontrara almacenado en la siguiente ruta: `./node_modules/jquery/dist/jquery.min.js` y es asi como debe ser referenciada desde el template HTML.<br/>
 Incluir la libreria desde las CDN de Microsoft o Google resulta ser mas beneficioso, por que si el usuario visita alguna pagina de estas empresas, almacenara una copia de la libreria en su cache, se cargara mas rapido y ademas, una CDN se asegura que la copia que descargue, sea del servidor mas proximo a su posicion.<br/>
-Es importante incluir la libreria de jQuery antes que otros scripts que hagan uso de ello, ya que la carga de elementos por parte del navegador es secuencial. Si se incluye primero el script que hace uso de jQuery, se hara referencia a funciones que todavia no han sido definidas y como traera como consecuencia un error.
+Es importante incluir la libreria de jQuery antes que otros scripts que hagan uso de ello, ya que la carga de elementos por parte del navegador es secuencial. Si se incluye primero el script que hace uso de jQuery, se hara referencia a funciones que todavia no han sido definidas y traera como consecuencia un error.
 
 ```html
 <head>
@@ -110,3 +110,79 @@ $("#btn").click(function() {
 });
 ```
 
+### Manejadores de Eventos
+
+Existen dos formas de asignar manejadores de eventos a los elementos del DOM. Una es a traves de los metodos individuales que tiene cada evento. Por ejemplo, el evento "onclick":
+
+```javascript
+$(selector).click(() => { /* sentencias */ }); /* | */ document.getElementById("id").onclick = () => { /* sentencias */ };
+```
+
+A su vez, un manejador de evento puede verse como una coleccion de referencias a funciones que se iran ejecutando segun su orden de asignacion, por lo que es posible asignar varias funciones a un mismo manejador. En javascript nativo era necesario usar el metodo `.addEventListener()`, pero en jQuery usando el mismo metodo añadira la funcion automaticamente:
+
+```javascript
+$(selector).click(() => { /* sentencias */ }); /* | */ document.getElementById("id").addEventListener("click", () => { /* sentencias */ });
+```
+
+Un elemento puede tener multiples manejadores de eventos, por esta razon, el metodo `.on()` permite asignar uno o varios manejaderos al mismo elemento o seleccion de elementos:
+
+```javascript
+$(selector).on("click", () => { /* sentencias */ });
+```
+
+En el caso de que se quiera asignar un solo manejador, el primer parametro del metodo `.on()` sera un string que especificara que manejador se quiere asignar, el segundo parametro sera la funcion que se invocara. Si se quieren asignar varios manejadores, como parametro se pasara un JSON en donde las claves deran los manejadores y los valores las funciones:
+
+```javascript
+$(selector).on({
+    "click": () => { /* sentencias */ },
+    "mouseenter": () => { /* sentencias */ }
+});
+```
+
+Tambien es posible cancelar eventos que tengan elementos por defecto, siempre y cuando estos sean cancelables. Para ello se debe usar el metodo `.preventDefault()`. Por ejemplo:
+
+```javascript
+$(selector).click((evento) => { evento.preventDefault(); }); /* | */ document.getElementById("id").addEventListener("click", (event) => {
+    event.preventDefault();
+});
+```
+
+Se puede obtener una lista completa de los manejadores de eventos a traves del siguiente [enlace](https://www.w3schools.com/Jquery/jquery_ref_events.asp "W3 School: jQuery evetns methods").
+
+### Getters y setters
+
+A diferencia de javascript nativo, que en su mayoria de casos se usaban propiedades para setear u obtener un valor, en jQuery se usan metodos, que en base a si reciben o no parametros, retornaran o setearan un valor. Si reciben un valor como parametro, la mayoria de metodos lo asignaran, pero si no lo hacen, retornaran un valor. Para asignar varios valores a un mismo metodo, se debe pasar como parametro un JSON:
+* <b>.text():</b> Retorna o setea el texto (no el nodo) que contendra una etiqueta. Si se setea un string que contiene un texto entre etiquetas, estas no seran interpretadas y se impirimiran literalmente.
+* <b>.html():</b> Retorna o setea el contenido de una etiqueta (incluidas las etiquetas en su interior).
+
+```javascript
+$(selector).html(); /* | */ document.getElementById("id").innerHTML;
+```
+
+* <b>.val():</b> Retorna o setea el value de un elemento:
+
+```javascript
+$(selector).val("value"); /* | */ document.getElementById("id").innerHTML = "value";
+```
+
+* <b>.attr():</b> Retorna o asigna el valor del atributo especificado por parametro. Tambien este metodo permite asignar nuevos atributos. El primer valor que se le pase, sera el atributo al cual se apunte del elemento. El segundo parametro opcional sera el valor.
+
+```javascript
+$(selector).attr("atributo"); /* | */ document.getElementById("id").getAttribute("atributo");
+```
+
+* <b>.prop():</b> Retorna o asigna el valor de la propiedad especificada por parametro.
+
+* <b>.css():</b> Añade estilos al elemento seleccionado:
+
+```javascript
+$(selector).css("propiedad", "valor"); /* | */ document.getElementById("id").style.propiedad = "valor";
+$(selector).css({                      /* | */ Object.assign(document.getElementById("anchor").style, {
+    "propiedad": "valor",              /* | */     "propiedad": "valor",
+    "otra-propiedad": "valor"          /* | */     "otra-propiedad": "valor"
+});                                    /* | */ });
+```
+
+
+
+### AJAX
