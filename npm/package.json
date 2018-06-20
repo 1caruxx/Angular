@@ -1,0 +1,22 @@
+{
+  "name": "npm",
+  "version": "1.0.0",
+  "description": "[npm](https://www.npmjs.com/ \"Pagina oficial de npm\") que por sus siglas significa, Node Package Manager o gestor de paquetes de node. Este es un sowftware que permite descargar, actualizar, eliminar y administrar de forma general paquetes. Un paquete es un archivo o conjunto de los mismos que almacena codigo en su interior y proporcionan diversas funcionalidades. Por ejemplo, una libreria, api o framework descargado mediante npm, son considerados a su vez paquetes, porque ademas de descargar los mismos, se añadiran archivos complementarios que pueden ser usados o no y se registrara en un archivo especial llamado `package.json`.",
+  "main": "dos.js",
+  "dependencies": {
+    "scrollmagic": "^2.0.5"
+  },
+  "devDependencies": {
+    "concurrently": "^3.6.0"
+  },
+  "scripts": {
+    "install": "echo \"Se instalo correctamente el paquete...\" && exit 1",
+    "watch-sass": "pug ./resources/pug2 -w -P --out ./html2",
+    "watch-pug": "pug ./resources/pug -w -P --out ./html",
+    "watchdogs": "concurrently npm:watch-*",
+    "devtest": "npm run watch-sass & npm run watch-pug"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

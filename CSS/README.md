@@ -37,6 +37,7 @@ CSS (Cascading Style Sheets, por su traduccion al español, hojas de estilo en c
 * [Animaciones](#animaciones)
 * [Fuentes](#fuentes)
 * [Importar estilos](#importar-estilos)
+* [Variables](#variables)
 * [Funciones](#funciones)
 
 ## Forma de uso

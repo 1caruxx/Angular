@@ -6,7 +6,10 @@
 
 * [Descarga y uso](#descarga-y-uso)
 * [Sintaxis](#sintaxis)<br/>
-&nbsp;&nbsp;&nbsp;[Obtencion de elementos del DOM](#obtencion-de-elementos-del-dom)
+&nbsp;&nbsp;&nbsp;[Obtencion de elementos del DOM](#obtencion-de-elementos-del-dom)<br/>
+&nbsp;&nbsp;&nbsp;[Manejadores de eventos](#manejadores-de-eventos)<br/>
+&nbsp;&nbsp;&nbsp;[Getters y setters](#getters-y-setters)<br/>
+&nbsp;&nbsp;&nbsp;[AJAX](#ajax)
 
 ## Descarga y uso
 
@@ -69,7 +72,7 @@ $(".clase-del-elemento");        /* | */ document.getElementsByClassName("clase-
 $("[name=nombre-del-elemento]"); /* | */ document.getElementsByName("nombre-del-elemento");
 ```
 
-Si bien a simple vista, estas funciones de jQuery contra los metodos de javascript nativo parece que hacen lo mismo, el valor que estas devuelven no lo es. Las funciones de jQuery retornaran un objeto de tipo javascript (JSON) que contendra todos los nodos resultantes de la seleccion. Las claves de estos nodos, seran un indice que ira desde el valor 0 hasta n (length - 1).<br/>
+Si bien a simple vista, estas funciones de jQuery contra los metodos de javascript nativo parece que hacen lo mismo, el valor que estas devuelven no lo es. Las funciones de jQuery retornaran un objeto de tipo javascript (JSON) que contendra todos los nodos resultantes de la seleccion. Las claves de estos nodos, seran un indice que ira desde el valor 0 hasta n (length - 1). Es por esta razon que la coleccion de elementos resultante de la seleccion no es iterable y no se le pueden aplicar propiedades o metodos de javascript nativo. Pero si es posible obtener los nodos de forma individual usando el metodo `.get()` para poder usar metodos y propiedades convencionales del DOM. El parametro que se debera pasar a este metodo es el indice (propidad) del nodo.<br/>
 Los metodos de javascript nativo pueden retonar distintos tipos de datos. En el caso del metodo `.getElementById()`, retornara un nodo, `.getElementsByTagName()` retornara un `HTMLcollection` al igual que `.getElementsByClassName()` y `.getElementsByName()` retornara un `Nodelist`. Estos dos ultimos pueden ser muy similares a un array y es posible recorrerlos como tales, sin embargo, los metodos convencionales de arrays no tendran efecto.
 Por esta razon, los metodos propios de jQuery no funcionaran con elementos obtenidos a traves de javascript nativo y viceversa.<br/>
 
@@ -182,7 +185,5 @@ $(selector).css({                      /* | */ Object.assign(document.getElement
     "otra-propiedad": "valor"          /* | */     "otra-propiedad": "valor"
 });                                    /* | */ });
 ```
-
-
 
 ### AJAX
