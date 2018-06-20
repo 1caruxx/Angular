@@ -1,8 +1,9 @@
 # ![Logo](./icon.png) Pug
 
+[Pug](https://pugjs.org/api/getting-started.html "Pagina oficial de Pug"), que anteriormente era conocido como [Jade](http://jade-lang.com/ "Pagina oficial de Jade"), es un pre-procesador para HTML. Este permite crear un template HTML mucho mas limpio con una sintaxis mas acotada. La razon por la que antes se llamaba "jade" y cambio al nombre "Pug" es que jade era una marca registrada.
+
 ## Instalacion y primeros pasos
 
-[Pug](https://pugjs.org/api/getting-started.html "Pagina oficial de Pug"), que anteriormente era conocido como [Jade](http://jade-lang.com/ "Pagina oficial de Jade"), es un pre-procesador para HTML. Este permite crear un template HTML mucho mas limpio con una sintaxis mas acotada. La razon por la que antes se llamaba "jade" y cambio al nombre "Pug" es que jade era una marca registrada.<br/>
 El template escrito en Pug debe almacenarse en un archivo con extension `.pug`. Los navegadores sin embargo, no reconoceran esta nueva sintaxis, por lo que previamente sera necesario transformar el codigo escrito en pug a codigo HTML. A este proceso se le conoce como "traspilacion".<br/>
 Para comenzar a usar pug, sera necesario descargar su CLI (Command Line Interface o interfaz de lineas de comandos) a traves del [gestor de paquetes de node](https://nodejs.org/es/ "Pagina oficial de node.js") (npm o node package manager).<br/>
 Para instalarlo, se debera abrir una consola de comandos, no importa cual, y escribir el siguiente comando:

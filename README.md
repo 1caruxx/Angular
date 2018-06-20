@@ -2,12 +2,12 @@
 
 ## Tabla de contenidos
 
-* [Instalacion y primeros pasos](#instalacion-y-primeros-pasos)<br>
-&nbsp;&nbsp;&nbsp;[npm scripts](#npm-scripts)
+* [Instalacion y primeros pasos](#instalacion-y-primeros-pasos)
+    * [npm scripts](#npm-scripts)
 * [Estructura de un proyecto](#estructura-de-un-proyecto)
 * [Flujo del codigo de un proyecto de Angular](#flujo-del-codigo-de-un-proyecto-de-angular)
-* [Componentes](#componentes)<br>
-&nbsp;&nbsp;&nbsp;[Creacion de un componente](#creacion-de-un-componente)
+* [Componentes](#componentes)
+    * [Creacion de un componente](#creacion-de-un-componente)
 * [Piezas declarables de una vista](#piezas-declarables-de-una-vista)
 * [Modulos](#modulos)
 * [Directivas](#directivas)

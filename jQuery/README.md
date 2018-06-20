@@ -5,11 +5,11 @@
 ## Tabla de contenidos
 
 * [Descarga y uso](#descarga-y-uso)
-* [Sintaxis](#sintaxis)<br/>
-&nbsp;&nbsp;&nbsp;[Obtencion de elementos del DOM](#obtencion-de-elementos-del-dom)<br/>
-&nbsp;&nbsp;&nbsp;[Manejadores de eventos](#manejadores-de-eventos)<br/>
-&nbsp;&nbsp;&nbsp;[Getters y setters](#getters-y-setters)<br/>
-&nbsp;&nbsp;&nbsp;[AJAX](#ajax)
+* [Sintaxis](#sintaxis)
+    * [Obtencion de elementos del DOM](#obtencion-de-elementos-del-dom)
+    * [Manejadores de eventos](#manejadores-de-eventos)
+    * [Getters y setters](#getters-y-setters)
+    * [AJAX](#ajax)
 
 ## Descarga y uso
 

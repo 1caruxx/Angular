@@ -5,10 +5,10 @@
 ## Tabla de contenidos
 
 * [Instalacion](#instalacion)
-* [Sintaxis](#sintaxis)<br>
-&nbsp;&nbsp;&nbsp;[HTML](#html)<br/>
-&nbsp;&nbsp;&nbsp;[CSS](#css)<br/>
-* [Snippets](#snippets)<br>
+* [Sintaxis](#sintaxis)
+    * [HTML](#html)
+    * [CSS](#css)
+* [Snippets](#snippets)
 
 ## Instalacion
 

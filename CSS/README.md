@@ -5,35 +5,35 @@ CSS (Cascading Style Sheets, por su traduccion al español, hojas de estilo en c
 ## Tabla de contenidos
 
 * [Forma de uso](#forma-de-uso)
-* [Sintaxis](#sintaxis)<br>
-&nbsp;&nbsp;&nbsp;[Selectores](#selectores)<br/>
-&nbsp;&nbsp;&nbsp;[Combinadores](#combinadores)<br/>
-&nbsp;&nbsp;&nbsp;[Pseudo-clases](#pseudo-clases)<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Pseudo-clase "child"](#pseudo-clase-child)<br/>
-&nbsp;&nbsp;&nbsp;[Pseudo-elementos](#pseudo-elementos)<br/>
-&nbsp;&nbsp;&nbsp;[Vendor prefix](#vendor-prefix)<br/>
-&nbsp;&nbsp;&nbsp;[Especificacion en CSS](#especificacion-en-css)<br/>
+* [Sintaxis](#sintaxis
+    * [Selectores](#selectores)
+    * [Combinadores](#combinadores)
+    * [Pseudo-clases](#pseudo-clases)
+        * [Pseudo-clase "child"](#pseudo-clase-child)
+    * [Pseudo-elementos](#pseudo-elementos)
+    * [Vendor prefix](#vendor-prefix)
+    * [Especificacion en CSS](#especificacion-en-css)
 * [Valores](#valores)
-* [Propiedades](#propiedades)<br/>
-&nbsp;&nbsp;&nbsp;[Background](#background)<br/>
-&nbsp;&nbsp;&nbsp;[Width y Height](#width-y-height)<br/>
-&nbsp;&nbsp;&nbsp;[Border](#border)<br/>
-&nbsp;&nbsp;&nbsp;[Outline](#outline)<br/>
-&nbsp;&nbsp;&nbsp;[Margin](#margin)<br/>
-&nbsp;&nbsp;&nbsp;[Padding y Box-sizing](#padding)<br/>
-&nbsp;&nbsp;&nbsp;[Texto](#texto)<br/>
-&nbsp;&nbsp;&nbsp;[Cursor](#cursor)<br/>
-&nbsp;&nbsp;&nbsp;[Display](#display)<br/>
-&nbsp;&nbsp;&nbsp;[Position y z-index](#position)<br/>
-&nbsp;&nbsp;&nbsp;[Float y Clear](#float-y-clear)<br/>
-&nbsp;&nbsp;&nbsp;[Box-shadow](#box-shadow)<br/>
-&nbsp;&nbsp;&nbsp;[Transform](#transform)<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Transformaciones bidimensionales](#transformaciones-bidimensionales)<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Transformaciones tridimensionales](#transformaciones-tridimensionales)<br/>
-&nbsp;&nbsp;&nbsp;[Transition](#transition)<br/>
-&nbsp;&nbsp;&nbsp;[Filter](#filter)<br/>
-&nbsp;&nbsp;&nbsp;[Column](#column)<br/>
-&nbsp;&nbsp;&nbsp;[Resize](#resize)
+* [Propiedades](#propiedades)
+    * [Background](#background)
+    * [Width y Height](#width-y-height)
+    * [Border](#border)
+    * [Outline](#outline)
+    * [Margin](#margin)
+    * [Padding y Box-sizing](#padding)
+    * [Texto](#texto)
+    * [Cursor](#cursor)
+    * [Display](#display)
+    * [Position y z-index](#position)
+    * [Float y Clear](#float-y-clear)
+    * [Box-shadow](#box-shadow)
+    * [Transform](#transform)
+        * [Transformaciones bidimensionales](#transformaciones-bidimensionales)
+        * [Transformaciones tridimensionales](#transformaciones-tridimensionales)
+    * [Transition](#transition)
+    * [Filter](#filter)
+    * [Column](#column)
+    * [Resize](#resize)
 * [Animaciones](#animaciones)
 * [Fuentes](#fuentes)
 * [Importar estilos](#importar-estilos)

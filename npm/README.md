@@ -1,6 +1,6 @@
 # ![Logo](./icon.png) npm
 
-[npm](https://www.npmjs.com/ "Pagina oficial de npm") que por sus siglas significa, Node Package Manager o gestor de paquetes de node. Este es un sowftware que permite descargar, actualizar, eliminar y administrar de forma general paquetes. Un paquete es un archivo o conjunto de los mismos que almacena codigo en su interior y proporcionan diversas funcionalidades. Por ejemplo, una libreria, api o framework descargado mediante npm, son considerados a su vez paquetes, porque ademas de descargar los mismos, se añadiran sus dependencias y archivos complementarios que pueden ser usados o no y se registrara en un archivo especial llamado `package.json`.
+[npm](https://www.npmjs.com/ "Pagina oficial de npm") que por sus siglas significa, Node Package Manager o gestor de paquetes de node. Este es un software que permite descargar, actualizar, eliminar y administrar de forma general paquetes. Un paquete es un archivo o conjunto de los mismos que almacena codigo en su interior y proporcionan diversas funcionalidades. Por ejemplo, una libreria, api o framework descargado mediante npm, son considerados a su vez paquetes, porque ademas de descargar los mismos, se añadiran sus dependencias y archivos complementarios que pueden ser usados o no y se registrara en un archivo especial llamado `package.json`.
 
 ## Tabla de contenidos
 
@@ -15,20 +15,20 @@
 
 npm es el gestor de paquetes de [node.js](https://nodejs.org/es/ "Pagina oficial de node.js"), lo que quiere decir que se instalara por defecto al instalar node.js. Una vez instalado node.js, se tendra acceso al CLI (command line interface o intefaz de lineas de comandos) de npm. Para verificar su correcta instalacion, se puede lanzar el siguiente comando en cualquier consola, sin importar donde se este posicionado:
 
-```bash
+```
 npm -v
 npm --version
 ```
 
 Para actualizar la version de npm:
 
-```bash
+```
 npm install -g npm@latest
 ```
 
 Y para conprobar una lista de los comandos disponibles:
 
-```bash
+```
 npm -h
 npm --help
 ```
@@ -77,7 +77,7 @@ npm init
 En este asistente se hacen unas preguntas en la que se deberan introducir datos que apareceran en el archivo final. Si se añade el parametro `--yes` o `-y`, se creara un archivo `package.json` por defecto (como si se hubiese presionado enter a todas las preguntas del asistente).<br/>
 Un archivo `package.json` tendra la siguiente estructura:
 
-```json
+```javascript
 {
   "name": "npm", // El nombre del proyecto, por defecto se le asigna el nombre del directorio en el cual se esta posicionado
   "version": "1.0.0", // La version actual del proyecto, por defecto se le asigna 1.0.0
@@ -133,7 +133,7 @@ npm outdated -g
 
 El comando `update` permite actualizarlos:
 
-```bash
+```
 npm update
 npm update -g
 ```

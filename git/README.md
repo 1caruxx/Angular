@@ -6,10 +6,10 @@
 
 * [Estados de un proyecto](#estados-de-un-proyecto)
 * [Primeros pasos](#Primeros-pasos)
-* [Commits](#commits)<br/>
-&nbsp;&nbsp;&nbsp;[Tags](#tags)
-* [Branchs](#branchs)<br/>
-&nbsp;&nbsp;&nbsp;[Github pages](#github-pages)
+* [Commits](#commits)
+    * [Tags](#tags)
+* [Branchs](#branchs)
+    * [Github pages](#github-pages)
 * [Clonar y subir repositorios](#clonar-y-subir-repositorios)
 
 ## Estados de un proyecto
